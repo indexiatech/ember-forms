@@ -1,0 +1,21 @@
+{
+  "name": "ember-forms",
+  "version": "0.0.1",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": "",
+  "license": "APACHE 2",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-coffee": "~0.10.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-connect": "~0.7.1",
+    "neuter": "~0.1.2",
+    "grunt-neuter": "~0.6.0",
+    "grunt-ember-templates": "~0.4.20",
+    "marked": "~0.3.2"
+  }
+}
