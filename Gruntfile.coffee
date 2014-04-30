@@ -35,6 +35,14 @@ module.exports = (grunt) ->
                 src: [ "**/*.coffee" ]
                 dest: "build/docs/"
                 ext: ".js"
+            tests_src:
+                options:
+                    bare: true
+                expand: true
+                cwd: "tests/"
+                src: ["**/*.coffee"]
+                dest: "build/tests/"
+                ext: ".js"
         #Compile hbs files of the src & docs sections.
         emberTemplates:
             options:
@@ -80,6 +88,9 @@ module.exports = (grunt) ->
             docs_src:
                 files: [ "docs/**/*.coffee"]
                 tasks: [ "coffee:docs_src", "neuter"]
+            tests_src:
+                files: [ "tests/**/*.coffee"]
+                tasks: [ "coffee:tests_src", "neuter"]
             docs_handlebars:
                 files: [ "docs/**/*.hbs"]
                 tasks: [ "emberTemplates", "neuter" ]
