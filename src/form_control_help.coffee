@@ -23,6 +23,10 @@ Ember.Forms.FormControlHelpComponent = Ember.Component.extend(
     hasHelp: (->
         @get('helpText')?.length > 0
     ).property('helpText')
+
+    hasError: (->
+        @get('errors')?.length
+    ).property('errors.length')
 )
 
 Ember.Handlebars.helper('em-form-control-help', Ember.Forms.FormControlHelpComponent)

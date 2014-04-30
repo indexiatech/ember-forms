@@ -16,15 +16,27 @@ Ember.Forms.FormGroupComponent = Ember.Component.extend
     tagName: 'div'
     layoutName: 'form_group'
     classNames: ['form-group']
-    classNameBindings: ['hasSuccess', 'hasWarning', 'hasError', 'hasHelp:has-error']
+    classNameBindings: ['hasSuccess', 'hasWarning', 'hasError', 'v_icons:has-feedback']
     model: Ember.computed.alias 'parentView.model'
     inline: Ember.computed.alias('parentView.isInline')
-    hasError: Ember.Forms.utils.createBoundSwitchAccessor 'error', 'status', 'none'
-    hasWarning: Ember.Forms.utils.createBoundSwitchAccessor 'warning', 'status', 'none'
-    hasSuccess: Ember.Forms.utils.createBoundSwitchAccessor 'success', 'status', 'none'
-    status: 'none'
+    hasSuccess: (-> @get('status') is 'success').property('status')
+    hasWarning: (-> @get('status') is 'warning').property('status')
+    hasError: (-> @get('status') is 'error').property('status')
     # has label?
     label: no
+    #should render icons?
+    v_icons: yes
+    v_success_icon: 'fa fa-check'
+    v_warn_icon: 'fa fa-exclamation-triangle'
+    v_error_icon: 'fa fa-times'
+
+    v_icon: (->
+        switch @get('status')
+            when 'success' then @get('v_success_icon')
+            when 'warning', 'warn' then @get('v_warn_icon')
+            when 'error' then @get('v_error_icon')
+            else null
+    ).property('status')
 
     init: ->
         @_super()
@@ -34,6 +46,11 @@ Ember.Forms.FormGroupComponent = Ember.Component.extend
         @set 'labelViewName', "label-view-name-#{@get('elementId')}"
         # have some help text such an error message?
         Ember.Binding.from("#{helpViewName}.hasHelp").to('hasHelp').connect(this)
+        Ember.Binding.from("#{helpViewName}.hasError").to('helpHasErrors').connect(this)
+
+    hasErrorChanged: (->
+        if @get('helpHasErrors') then @set('status', 'error') else @set('status', 'success' )
+    ).observes('helpHasErrors')
 
     labelText: (->
         @get('label') || @get('property')
@@ -46,6 +63,6 @@ Ember.Forms.FormGroupComponent = Ember.Component.extend
 
     focusOut: ->
         @set('canShowErrors', true)
-        @set 'status', 'success' if not @get('hasHelp')
+        @set 'status', 'success' if not @get('hasError')
 
 Ember.Handlebars.helper('em-form-group', Ember.Forms.FormGroupComponent)

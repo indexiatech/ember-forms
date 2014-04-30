@@ -2,6 +2,9 @@
     {{em-form-label text=labelText viewName=labelViewName}}
 {{/if}}
 {{view controlView viewName=controlViewName}}
+{{#if v_icons}}
+    <span class="form-control-feedback"><i {{bind-attr class=v_icon}}></i></span>
+{{/if}}
 {{!No errors when layout is inline}}
 {{#unless inline}}
     {{#if canShowErrors}}
