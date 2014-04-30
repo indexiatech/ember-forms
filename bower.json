@@ -20,6 +20,17 @@
       "css3",
       "css"
   ],
+  "ignore": [
+    "**/.*",
+    "!dist",
+    "!LICENSE",
+    "!README.md",
+    "!bower.json",
+    "!dist/",
+    "!dist/*",
+    "!dist/*/*",
+    "!dist/*/*/*"
+  ],
   "license": "Apache2",
   "ignore": [
     "CHANGELOG.txt",
