@@ -15,7 +15,7 @@
 <h3>And the following model:</h3>
 <div class="well line-example">
     <pre><code class="coffeescript">
-        User = Em.Model.extend
+        User = DS.Model
             firstName: DS.attr 'string'
             lastName: DS.attr 'string'
 
@@ -30,6 +30,8 @@
     </code></pre>
 </div>
 
+<i>Note: for validation support you need: https://github.com/dockyard/ember-validations project</i>
+
 <h3>With this template:</h3>
 <div class="well line-example">
     <pre><code class="coffeescript">
@@ -42,6 +44,7 @@
 
 <h3>The result would be:</h3>
 
+<a href="http://jsbin.com/pexolude/2" target="_blank" class="btn btn-warning jsbin pull-right">jsBin</a>
 <div class="well line-example">
     {{#em-form model=model}}
         {{em-input property="firstName" label="First Name" placeholder="Please enter first name."}}
