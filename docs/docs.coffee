@@ -42,6 +42,7 @@ App.Router.map ->
     @route 'getstarted'
     @route 'quickexample'
     @resource 'controls', ->
+        @route 'html5'
         @route 'text'
 
 App.IndexRoute = Em.Route.extend
@@ -65,9 +66,9 @@ App.SidebarController = Em.ArrayController.extend
             {route: 'overview', text: 'Overview', items: []}
             {route: 'getstarted', text: 'Getting started', items: []}
             {route: 'quickexample', text: '5 Minutes Example', items: []}
-#            {route: 'controls', text: 'Controls', items:[
-#                    {route: 'controls.text', text: 'Text', fiddle: 'http://jsfiddle.net/some_fiddle/'}
-#                ]
-#            }
+            {route: 'controls', text: 'Controls', items:[
+                    {route: 'controls.html5', text: 'Html5'}
+#                    {route: 'controls.text', text: 'Text'}
+                ]
+            }
         ]
-
