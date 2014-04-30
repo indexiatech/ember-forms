@@ -1,5 +1,5 @@
 .navbar-brand {
-    background: url("../img/ember_logo.png") left center no-repeat;
+    background: url("./img/ember_logo.png") left center no-repeat;
     background-size: 50px;
     padding-left: 100px;
     margin-left: 0 !important;

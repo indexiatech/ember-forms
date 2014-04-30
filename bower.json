@@ -15,6 +15,9 @@
     "jquery": "~2.1.0",
     "bootstrap": "~3.1.1",
     "ember": "~1.5.1",
-    "font-awesome": "~4.0.3"
+    "font-awesome": "~4.0.3",
+    "highlightjs": "~8.0.0",
+    "ember-qunit": "~0.1.8",
+    "ember-model": "~0.0.11"
   }
 }

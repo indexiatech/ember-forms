@@ -1,0 +1,10 @@
+{{#if labelText}}
+    {{em-form-label text=labelText viewName=labelViewName}}
+{{/if}}
+{{view controlView viewName=controlViewName}}
+{{!No errors when layout is inline}}
+{{#unless inline}}
+    {{#if canShowErrors}}
+        {{em-form-control-help text=help viewName=helpViewName}}
+    {{/if}}
+{{/unless}}

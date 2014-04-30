@@ -1,0 +1,50 @@
+<h1>5 Minutes Example</h1>
+
+<p>Here's a quick sample how it works:</p>
+<h3>Given the following controller:</h3>
+<div class="well line-example">
+    <pre><code class="coffeescript">
+        MyController = Em.Controller.extend
+            actions:
+                submit:
+                    alert "Submitted!"
+    </code></pre>
+</div>
+
+
+<h3>And the following model:</h3>
+<div class="well line-example">
+    <pre><code class="coffeescript">
+        User = Em.Model.extend
+            firstName: DS.attr 'string'
+            lastName: DS.attr 'string'
+
+        User.reopen
+            validations:
+                firstName:
+                    presence: true
+                    length: { minimum: 5 }
+                lastName:
+                    presence: true
+                    length: { minimum: 10 }
+    </code></pre>
+</div>
+
+<h3>With this template:</h3>
+<div class="well line-example">
+    <pre><code class="coffeescript">
+    \{{#em-form model=model}}
+        \{{em-input property="firstName" label="First Name" placeholder="Please enter first name."}}
+        \{{em-input property="lastName" label="Last Name" placeholder="Please enter last name."}}
+    \{{/em-form}}
+    </code></pre>
+</div>
+
+<h3>The result would be:</h3>
+
+<div class="well line-example">
+    {{#em-form model=model}}
+        {{em-input property="firstName" label="First Name" placeholder="Please enter first name."}}
+        {{em-input property="lastName" label="Last Name" placeholder="Please enter last name."}}
+    {{/em-form}}
+</div>
