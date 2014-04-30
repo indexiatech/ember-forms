@@ -16,17 +16,20 @@
 <div class="well line-example">
     <pre><code class="coffeescript">
         User = DS.Model
-            firstName: DS.attr 'string'
-            lastName: DS.attr 'string'
+            name: DS.attr 'string'
+            password: DS.attr 'string'
+            nameHasValue: (->
+                not @get('name')?.length
+            ).property('name')
 
         User.reopen
             validations:
-                firstName:
+                name:
                     presence: true
                     length: { minimum: 5 }
-                lastName:
+                password:
                     presence: true
-                    length: { minimum: 10 }
+                    length: { minimum: 6 }
     </code></pre>
 </div>
 
@@ -36,8 +39,8 @@
 <div class="well line-example">
     <pre><code class="coffeescript">
     \{{#em-form model=model}}
-        \{{em-input property="firstName" label="First Name" placeholder="Please enter first name."}}
-        \{{em-input property="lastName" label="Last Name" placeholder="Please enter last name."}}
+        \{{em-input property="name" label="Full Name" placeholder="Please enter a name."}}
+        \{{em-input property="password" placeholder="Please enter a password." type="password" disabled=nameHasValue}}
     \{{/em-form}}
     </code></pre>
 </div>
@@ -46,8 +49,5 @@
 
 <a href="http://jsbin.com/pexolude/2" target="_blank" class="btn btn-warning jsbin pull-right">jsBin</a>
 <div class="well line-example">
-    {{#em-form model=model}}
-        {{em-input property="firstName" label="First Name" placeholder="Please enter first name."}}
-        {{em-input property="lastName" label="Last Name" placeholder="Please enter last name."}}
-    {{/em-form}}
+    {{render 'form_sample' model}}
 </div>

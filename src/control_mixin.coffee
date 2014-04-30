@@ -5,7 +5,8 @@ Ember.Forms.ControlMixin = Ember.Mixin.create
     classNames: ['form-control']
     propertyBinding: 'parentView.property'
     placeholderBinding: 'parentView.placeholder'
-    attributeBindings: ['placeholderText:placeholder']
+    disabledBinding: 'parentView.disabled'
+    attributeBindings: ['placeholderText:placeholder', 'disabled']
     model: Ember.computed.alias 'parentView.model'
 
     init: ->

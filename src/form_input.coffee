@@ -6,6 +6,7 @@ Syntax:
 ###
 Ember.Forms.FormInputComponent = Ember.Forms.FormGroupComponent.extend
     controlView: Em.TextField.extend(Em.Forms.ControlMixin,
+        typeBinding: 'parentView.type'
     )
 
 Ember.Handlebars.helper('em-input', (options) ->

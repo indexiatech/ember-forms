@@ -17,6 +17,7 @@ Ember.Forms.FormGroupComponent = Ember.Component.extend
     layoutName: 'form_group'
     classNames: ['form-group']
     classNameBindings: ['hasSuccess', 'hasWarning', 'hasError', 'v_icons:has-feedback']
+    attributeBindings: ['disabled']
     model: Ember.computed.alias 'parentView.model'
     inline: Ember.computed.alias('parentView.isInline')
     hasSuccess: (-> @get('status') is 'success').property('status')

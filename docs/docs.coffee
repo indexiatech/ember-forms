@@ -12,19 +12,22 @@ require 'build/docs/views/mixins'
 require 'build/docs/views/ember_forms'
 
 
-App.Person = DS.Model.extend(Ember.Validations.Mixin,
-    firstName: DS.attr('string')
-    lastName:  DS.attr('string')
+App.SimplePerson = DS.Model.extend(Ember.Validations.Mixin,
+    name: DS.attr('string')
+    password:  DS.attr('string')
+    nameHasValue: (->
+        not @get('name')?.length
+    ).property('name')
 )
 
-App.Person.reopen
+App.SimplePerson.reopen
     validations:
-        firstName:
+        name:
             presence: true
             length: { minimum: 5 }
-        lastName:
+        password:
             presence: true
-            length: { minimum: 10 }
+            length: { minimum: 6 }
 
 Em.Route.reopen
     renderTemplate: ->
@@ -46,17 +49,15 @@ App.IndexRoute = Em.Route.extend
 
 App.OverviewRoute = Em.Route.extend
     model: ->
-        model = @get('store').createRecord 'person'
+        model = @get('store').createRecord 'simple_person'
         model
 
 App.QuickexampleRoute = App.OverviewRoute.extend()
 
-App.QuickexampleController = Em.Controller.extend
+App.FormSampleController = Em.Controller.extend
     actions:
         submit: ->
             alert "Submitted!"
-
-App.OverviewController = App.QuickexampleController.extend()
 
 App.SidebarController = Em.ArrayController.extend
     content:
