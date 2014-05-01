@@ -18,6 +18,8 @@
         User = DS.Model
             name: DS.attr 'string'
             password: DS.attr 'string'
+            comment: DS.attr('string')
+            active: DS.attr('boolean')
             nameHasValue: (->
                 not @get('name')?.length
             ).property('name')
@@ -30,6 +32,8 @@
                 password:
                     presence: true
                     length: { minimum: 6 }
+                comment:
+                    presence: true
     </code></pre>
 </div>
 
@@ -38,10 +42,12 @@
 <h3>With this template:</h3>
 <div class="well line-example">
     <pre><code class="coffeescript">
-    \{{#em-form model=model}}
-        \{{em-input property="name" label="Full Name" placeholder="Please enter a name."}}
-        \{{em-input property="password" placeholder="Please enter a password." type="password" disabled=nameHasValue}}
-    \{{/em-form}}
+        \{{#em-form model=model}}
+            \{{em-input property="name" label="Full Name" placeholder="Please enter a name."}}
+            \{{em-input property="password" placeholder="Please enter a password." type="password" disabled=nameHasValue}}
+            \{{em-text property="comment" rows=4}}
+            \{{em-checkbox property="active"}}
+        \{{/em-form}}
     </code></pre>
 </div>
 
