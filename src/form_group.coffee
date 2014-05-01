@@ -15,16 +15,19 @@ Syntax:
 Ember.Forms.FormGroupComponent = Ember.Component.extend
     tagName: 'div'
     layoutName: 'form_group'
-    classNames: ['form-group']
-    classNameBindings: ['hasSuccess', 'hasWarning', 'hasError', 'v_icons:has-feedback']
+    classNameBindings: ['formGroup', 'hasSuccess', 'hasWarning', 'hasError', 'v_icons:has-feedback']
     attributeBindings: ['disabled']
     model: Ember.computed.alias 'parentView.model'
     inline: Ember.computed.alias('parentView.isInline')
     hasSuccess: (-> @get('status') is 'success').property('status')
     hasWarning: (-> @get('status') is 'warning').property('status')
     hasError: (-> @get('status') is 'error').property('status')
+    #add form-group class?
+    formGroup: true
     # has label?
     label: no
+    #yield inside label?
+    yieldInsideLabel: no
     #should render icons?
     v_icons: yes
     v_success_icon: 'fa fa-check'
@@ -54,7 +57,7 @@ Ember.Forms.FormGroupComponent = Ember.Component.extend
     ).observes('helpHasErrors')
 
     labelText: (->
-        @get('label') || @get('property')
+        @get('label') || Ember.Forms.utils.namelize @get('property')
     ).property('label')
 
     # read-only

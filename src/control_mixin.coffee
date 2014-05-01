@@ -2,12 +2,12 @@
 Mixin that should be applied for all controls
 ###
 Ember.Forms.ControlMixin = Ember.Mixin.create
-    classNames: ['form-control']
+    classNameBindings: ['hasFormControlClass:form-control']
     propertyBinding: 'parentView.property'
     placeholderBinding: 'parentView.placeholder'
     disabledBinding: 'parentView.disabled'
     attributeBindings: ['placeholderText:placeholder', 'disabled']
-    model: Ember.computed.alias 'parentView.model'
+    hasFormControlClass: yes
 
     init: ->
         @_super()

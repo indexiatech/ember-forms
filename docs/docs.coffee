@@ -15,9 +15,15 @@ require 'build/docs/views/ember_forms'
 App.SimplePerson = DS.Model.extend(Ember.Validations.Mixin,
     name: DS.attr('string')
     password:  DS.attr('string')
+    comment: DS.attr('string')
+    active: DS.attr('boolean')
     nameHasValue: (->
         not @get('name')?.length
     ).property('name')
+
+    asjson: (->
+        JSON.stringify @toJSON()
+    ).property('name', 'password', 'comment', 'active')
 )
 
 App.SimplePerson.reopen
@@ -28,6 +34,8 @@ App.SimplePerson.reopen
         password:
             presence: true
             length: { minimum: 6 }
+        comment:
+            presence: true
 
 Em.Route.reopen
     renderTemplate: ->

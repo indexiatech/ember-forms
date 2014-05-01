@@ -6,3 +6,5 @@ Ember.Forms.utils.createBoundSwitchAccessor = (switchValue, myProperty, myDefaul
             @set myProperty, (if value then switchValue else myDefault)
         @get(myProperty) is switchValue
     ).property(myProperty)
+
+Ember.Forms.utils.namelize = (string) -> string.underscore().split('_').join(' ').capitalize()
