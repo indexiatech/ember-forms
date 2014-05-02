@@ -29,6 +29,8 @@ Ember.Forms.FormComponent = Ember.Component.extend
     form_layout: 'form'
     #if true a submit button is rendered
     submit_button: true
+    #if true validation icons per group will be visible
+    v_icons: true
 
     ###
     Form submit

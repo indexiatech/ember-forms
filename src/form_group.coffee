@@ -29,7 +29,7 @@ Ember.Forms.FormGroupComponent = Ember.Component.extend
     #yield inside label?
     yieldInsideLabel: no
     #should render icons?
-    v_icons: yes
+    v_icons: Ember.computed.alias 'parentView.v_icons'
     v_success_icon: 'fa fa-check'
     v_warn_icon: 'fa fa-exclamation-triangle'
     v_error_icon: 'fa fa-times'
