@@ -7,7 +7,7 @@ Syntax:
 Ember.Forms.FormSubmitComponent = Ember.Component.extend
     tagName: 'button'
     classNames: ['btn', 'btn-default']
-    layoutName: 'form_submit_button'
+    layoutName: 'form-submit-button'
     text: 'Submit'
     type: 'submit'
     attributeBindings: ['type', 'value', 'disabled']

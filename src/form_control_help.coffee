@@ -7,7 +7,7 @@ Syntax:
 Ember.Forms.FormControlHelpComponent = Ember.Component.extend(
     tagName: 'span'
     classNames: ['help-block']
-    layoutName: 'form_control_help'
+    layoutName: 'form-control-help'
     model: Ember.computed.alias('parentView.model')
     property: Ember.computed.alias('parentView.property')
     text: undefined

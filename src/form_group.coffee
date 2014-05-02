@@ -14,7 +14,7 @@ Syntax:
 ###
 Ember.Forms.FormGroupComponent = Ember.Component.extend
     tagName: 'div'
-    layoutName: 'form_group'
+    layoutName: 'form-group'
     classNameBindings: ['formGroup', 'hasSuccess', 'hasWarning', 'hasError', 'v_icons:has-feedback']
     attributeBindings: ['disabled']
     model: Ember.computed.alias 'parentView.model'

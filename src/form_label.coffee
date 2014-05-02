@@ -6,7 +6,7 @@ Syntax:
 ###
 Ember.Forms.FormLabelComponent = Ember.Component.extend
     tagName: 'label'
-    layoutName: 'form_label'
+    layoutName: 'form-label'
     classNames: ['control-label']
     attributesBinding: ['for']
 
