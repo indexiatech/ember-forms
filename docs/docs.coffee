@@ -17,13 +17,14 @@ App.SimplePerson = DS.Model.extend(Ember.Validations.Mixin,
     password:  DS.attr('string')
     comment: DS.attr('string')
     active: DS.attr('boolean')
+    gender: DS.attr('string')
     nameHasValue: (->
         not @get('name')?.length
     ).property('name')
 
     asjson: (->
         JSON.stringify @toJSON()
-    ).property('name', 'password', 'comment', 'active')
+    ).property('name', 'password', 'comment', 'active', 'gender')
 )
 
 App.SimplePerson.reopen
@@ -36,6 +37,8 @@ App.SimplePerson.reopen
             length: { minimum: 6 }
         comment:
             presence: true
+        gender:
+            presence:true
 
 Em.Route.reopen
     renderTemplate: ->
@@ -65,6 +68,11 @@ App.QuickexampleRoute = App.OverviewRoute.extend()
 
 App.FormSampleController = Em.Controller.extend
     layout: 'default'
+    genderOptions: [
+        {id: 'M', name: 'Male'}
+        {id: 'F', name: 'Female'}
+        {id: 'O', name: 'Other'}
+    ]
 
     actions:
         submit: ->
