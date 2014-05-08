@@ -143,229 +143,6 @@ Ember.Forms.InFormMixin = Em.Mixin.create({
 
 (function() {
 
-Ember.TEMPLATES["components/_control-within-label"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
-
-function program1(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n    ");
-  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/_form-group-control", options) : helperMissing.call(depth0, "partial", "components/_form-group-control", options))));
-  data.buffer.push("\n");
-  return buffer;
-  }
-
-  stack1 = (helper = helpers['em-form-label'] || (depth0 && depth0['em-form-label']),options={hash:{
-    'text': ("label"),
-    'horiClass': (""),
-    'inlineClass': (""),
-    'viewName': ("labelViewName")
-  },hashTypes:{'text': "ID",'horiClass': "STRING",'inlineClass': "STRING",'viewName': "ID"},hashContexts:{'text': depth0,'horiClass': depth0,'inlineClass': depth0,'viewName': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "em-form-label", options));
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  else { data.buffer.push(''); }
-  
-});
-
-Ember.TEMPLATES["components/_form-group-control"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this;
-
-function program1(depth0,data) {
-  
-  var buffer = '';
-  data.buffer.push("\n    <div ");
-  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
-    'class': ("controlWrapper")
-  },hashTypes:{'class': "ID"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">\n        ");
-  data.buffer.push(escapeExpression(helpers.view.call(depth0, "controlView", {hash:{
-    'viewName': ("controlViewName"),
-    'property': ("propertyName")
-  },hashTypes:{'viewName': "ID",'property': "ID"},hashContexts:{'viewName': depth0,'property': depth0},contexts:[depth0],types:["ID"],data:data})));
-  data.buffer.push("\n    </div>\n");
-  return buffer;
-  }
-
-function program3(depth0,data) {
-  
-  var buffer = '';
-  data.buffer.push("\n    ");
-  data.buffer.push(escapeExpression(helpers.view.call(depth0, "controlView", {hash:{
-    'viewName': ("controlViewName"),
-    'property': ("propertyName")
-  },hashTypes:{'viewName': "ID",'property': "ID"},hashContexts:{'viewName': depth0,'property': depth0},contexts:[depth0],types:["ID"],data:data})));
-  data.buffer.push("\n");
-  return buffer;
-  }
-
-  stack1 = helpers['if'].call(depth0, "controlWrapper", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n");
-  return buffer;
-  
-});
-
-Ember.TEMPLATES["components/_form-group"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var stack1, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
-
-function program1(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n    ");
-  stack1 = helpers['if'].call(depth0, "label", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(13, program13, data),fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n    ");
-  stack1 = helpers['if'].call(depth0, "v_icons", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(15, program15, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n\n    \n    ");
-  stack1 = helpers.unless.call(depth0, "form.isInline", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(17, program17, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n");
-  return buffer;
-  }
-function program2(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n        ");
-  stack1 = helpers['if'].call(depth0, "yieldInLabel", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(8, program8, data),fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n    ");
-  return buffer;
-  }
-function program3(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n            ");
-  stack1 = helpers['if'].call(depth0, "labelWrapperClass", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(6, program6, data),fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        ");
-  return buffer;
-  }
-function program4(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n                <div ");
-  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
-    'class': ("labelWrapperClass")
-  },hashTypes:{'class': "ID"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">\n                    ");
-  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/_control-within-label", options) : helperMissing.call(depth0, "partial", "components/_control-within-label", options))));
-  data.buffer.push("\n                </div>\n            ");
-  return buffer;
-  }
-
-function program6(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n                ");
-  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/_control-within-label", options) : helperMissing.call(depth0, "partial", "components/_control-within-label", options))));
-  data.buffer.push("\n            ");
-  return buffer;
-  }
-
-function program8(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n            ");
-  stack1 = helpers['if'].call(depth0, "labelWrapperClass", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(11, program11, data),fn:self.program(9, program9, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n        ");
-  return buffer;
-  }
-function program9(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n                <div ");
-  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
-    'class': ("labelWrapperClass")
-  },hashTypes:{'class': "ID"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">\n                    ");
-  data.buffer.push(escapeExpression((helper = helpers['em-form-label'] || (depth0 && depth0['em-form-label']),options={hash:{
-    'text': ("label"),
-    'viewName': ("labelViewName")
-  },hashTypes:{'text': "ID",'viewName': "ID"},hashContexts:{'text': depth0,'viewName': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "em-form-label", options))));
-  data.buffer.push("\n                    ");
-  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/_form-group-control", options) : helperMissing.call(depth0, "partial", "components/_form-group-control", options))));
-  data.buffer.push("\n                </div>\n            ");
-  return buffer;
-  }
-
-function program11(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n                ");
-  data.buffer.push(escapeExpression((helper = helpers['em-form-label'] || (depth0 && depth0['em-form-label']),options={hash:{
-    'text': ("label"),
-    'viewName': ("labelViewName")
-  },hashTypes:{'text': "ID",'viewName': "ID"},hashContexts:{'text': depth0,'viewName': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "em-form-label", options))));
-  data.buffer.push("\n                ");
-  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/_form-group-control", options) : helperMissing.call(depth0, "partial", "components/_form-group-control", options))));
-  data.buffer.push("\n            ");
-  return buffer;
-  }
-
-function program13(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n        ");
-  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/_form-group-control", options) : helperMissing.call(depth0, "partial", "components/_form-group-control", options))));
-  data.buffer.push("\n    ");
-  return buffer;
-  }
-
-function program15(depth0,data) {
-  
-  var buffer = '';
-  data.buffer.push("\n        <span class=\"form-control-feedback\"><i ");
-  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
-    'class': ("v_icon")
-  },hashTypes:{'class': "ID"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push("></i></span>\n    ");
-  return buffer;
-  }
-
-function program17(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n        ");
-  stack1 = helpers['if'].call(depth0, "canShowErrors", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(18, program18, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n    ");
-  return buffer;
-  }
-function program18(depth0,data) {
-  
-  var buffer = '', helper, options;
-  data.buffer.push("\n            ");
-  data.buffer.push(escapeExpression((helper = helpers['em-form-control-help'] || (depth0 && depth0['em-form-control-help']),options={hash:{
-    'text': ("help"),
-    'viewName': ("helpViewName")
-  },hashTypes:{'text': "ID",'viewName': "ID"},hashContexts:{'text': depth0,'viewName': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "em-form-control-help", options))));
-  data.buffer.push("\n        ");
-  return buffer;
-  }
-
-function program20(depth0,data) {
-  
-  var buffer = '', stack1;
-  data.buffer.push("\n    ");
-  stack1 = helpers._triageMustache.call(depth0, "yield", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n");
-  return buffer;
-  }
-
-  stack1 = helpers.unless.call(depth0, "template", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(20, program20, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  else { data.buffer.push(''); }
-  
-});
-
 Ember.TEMPLATES["components/form-control-help"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
@@ -391,7 +168,7 @@ function program1(depth0,data) {
     'class': ("wrapperClass")
   },hashTypes:{'class': "ID"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
   data.buffer.push(">\n        ");
-  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/_form-group", options) : helperMissing.call(depth0, "partial", "components/_form-group", options))));
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/formgroup/form-group", options) : helperMissing.call(depth0, "partial", "components/formgroup/form-group", options))));
   data.buffer.push("\n    </div>\n");
   return buffer;
   }
@@ -400,7 +177,7 @@ function program3(depth0,data) {
   
   var buffer = '', helper, options;
   data.buffer.push("\n    ");
-  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/_form-group", options) : helperMissing.call(depth0, "partial", "components/_form-group", options))));
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/formgroup/form-group", options) : helperMissing.call(depth0, "partial", "components/formgroup/form-group", options))));
   data.buffer.push("\n");
   return buffer;
   }
@@ -481,14 +258,16 @@ function program3(depth0,data) {
 Ember.TEMPLATES["components/form"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, self=this;
+  var buffer = '', stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
-  var buffer = '', stack1;
+  var buffer = '', helper, options;
   data.buffer.push("\n    ");
-  stack1 = helpers._triageMustache.call(depth0, "em-form-submit", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push(escapeExpression((helper = helpers['em-form-submit'] || (depth0 && depth0['em-form-submit']),options={hash:{
+    'text': ("submit_button_text"),
+    'class': ("submit_button_class")
+  },hashTypes:{'text': "ID",'class': "ID"},hashContexts:{'text': depth0,'class': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "em-form-submit", options))));
   data.buffer.push("\n");
   return buffer;
   }
@@ -499,6 +278,229 @@ function program1(depth0,data) {
   stack1 = helpers['if'].call(depth0, "submit_button", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   return buffer;
+  
+});
+
+Ember.TEMPLATES["components/formgroup/control-within-label"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n    ");
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/formgroup/form-group-control", options) : helperMissing.call(depth0, "partial", "components/formgroup/form-group-control", options))));
+  data.buffer.push("\n");
+  return buffer;
+  }
+
+  stack1 = (helper = helpers['em-form-label'] || (depth0 && depth0['em-form-label']),options={hash:{
+    'text': ("label"),
+    'horiClass': (""),
+    'inlineClass': (""),
+    'viewName': ("labelViewName")
+  },hashTypes:{'text': "ID",'horiClass': "STRING",'inlineClass': "STRING",'viewName': "ID"},hashContexts:{'text': depth0,'horiClass': depth0,'inlineClass': depth0,'viewName': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "em-form-label", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  else { data.buffer.push(''); }
+  
+});
+
+Ember.TEMPLATES["components/formgroup/form-group-control"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\n    <div ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': ("controlWrapper")
+  },hashTypes:{'class': "ID"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">\n        ");
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "controlView", {hash:{
+    'viewName': ("controlViewName"),
+    'property': ("propertyName")
+  },hashTypes:{'viewName': "ID",'property': "ID"},hashContexts:{'viewName': depth0,'property': depth0},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\n    </div>\n");
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\n    ");
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "controlView", {hash:{
+    'viewName': ("controlViewName"),
+    'property': ("propertyName")
+  },hashTypes:{'viewName': "ID",'property': "ID"},hashContexts:{'viewName': depth0,'property': depth0},contexts:[depth0],types:["ID"],data:data})));
+  data.buffer.push("\n");
+  return buffer;
+  }
+
+  stack1 = helpers['if'].call(depth0, "controlWrapper", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n");
+  return buffer;
+  
+});
+
+Ember.TEMPLATES["components/formgroup/form-group"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var stack1, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n    ");
+  stack1 = helpers['if'].call(depth0, "label", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(13, program13, data),fn:self.program(2, program2, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n\n    ");
+  stack1 = helpers['if'].call(depth0, "v_icons", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(15, program15, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n\n    \n    ");
+  stack1 = helpers.unless.call(depth0, "form.isInline", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(17, program17, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n");
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n        ");
+  stack1 = helpers['if'].call(depth0, "yieldInLabel", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(8, program8, data),fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n    ");
+  return buffer;
+  }
+function program3(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n            ");
+  stack1 = helpers['if'].call(depth0, "labelWrapperClass", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(6, program6, data),fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n        ");
+  return buffer;
+  }
+function program4(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n                <div ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': ("labelWrapperClass")
+  },hashTypes:{'class': "ID"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">\n                    ");
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/formgroup/control-within-label", options) : helperMissing.call(depth0, "partial", "components/formgroup/control-within-label", options))));
+  data.buffer.push("\n                </div>\n            ");
+  return buffer;
+  }
+
+function program6(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n                ");
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/formgroup/control-within-label", options) : helperMissing.call(depth0, "partial", "components/formgroup/control-within-label", options))));
+  data.buffer.push("\n            ");
+  return buffer;
+  }
+
+function program8(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n            ");
+  stack1 = helpers['if'].call(depth0, "labelWrapperClass", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(11, program11, data),fn:self.program(9, program9, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n        ");
+  return buffer;
+  }
+function program9(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n                <div ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': ("labelWrapperClass")
+  },hashTypes:{'class': "ID"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">\n                    ");
+  data.buffer.push(escapeExpression((helper = helpers['em-form-label'] || (depth0 && depth0['em-form-label']),options={hash:{
+    'text': ("label"),
+    'viewName': ("labelViewName")
+  },hashTypes:{'text': "ID",'viewName': "ID"},hashContexts:{'text': depth0,'viewName': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "em-form-label", options))));
+  data.buffer.push("\n                    ");
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/formgroup/form-group-control", options) : helperMissing.call(depth0, "partial", "components/formgroup/form-group-control", options))));
+  data.buffer.push("\n                </div>\n            ");
+  return buffer;
+  }
+
+function program11(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n                ");
+  data.buffer.push(escapeExpression((helper = helpers['em-form-label'] || (depth0 && depth0['em-form-label']),options={hash:{
+    'text': ("label"),
+    'viewName': ("labelViewName")
+  },hashTypes:{'text': "ID",'viewName': "ID"},hashContexts:{'text': depth0,'viewName': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "em-form-label", options))));
+  data.buffer.push("\n                ");
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/formgroup/form-group-control", options) : helperMissing.call(depth0, "partial", "components/formgroup/form-group-control", options))));
+  data.buffer.push("\n            ");
+  return buffer;
+  }
+
+function program13(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n        ");
+  data.buffer.push(escapeExpression((helper = helpers.partial || (depth0 && depth0.partial),options={hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "components/formgroup/form-group-control", options) : helperMissing.call(depth0, "partial", "components/formgroup/form-group-control", options))));
+  data.buffer.push("\n    ");
+  return buffer;
+  }
+
+function program15(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\n        <span class=\"form-control-feedback\"><i ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': ("v_icon")
+  },hashTypes:{'class': "ID"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push("></i></span>\n    ");
+  return buffer;
+  }
+
+function program17(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n        ");
+  stack1 = helpers['if'].call(depth0, "canShowErrors", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(18, program18, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n    ");
+  return buffer;
+  }
+function program18(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\n            ");
+  data.buffer.push(escapeExpression((helper = helpers['em-form-control-help'] || (depth0 && depth0['em-form-control-help']),options={hash:{
+    'text': ("help"),
+    'viewName': ("helpViewName")
+  },hashTypes:{'text': "ID",'viewName': "ID"},hashContexts:{'text': depth0,'viewName': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "em-form-control-help", options))));
+  data.buffer.push("\n        ");
+  return buffer;
+  }
+
+function program20(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\n    ");
+  stack1 = helpers._triageMustache.call(depth0, "yield", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\n");
+  return buffer;
+  }
+
+  stack1 = helpers.unless.call(depth0, "template", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(20, program20, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  else { data.buffer.push(''); }
   
 });
 
@@ -522,6 +524,8 @@ Syntax:
     action="some_action"
     //if true a submit button will be rendered
     submit_button=true|false
+    //the submit button text
+    submit_button_text="Add"
     //if true validation icons will be rendered
     v_icons=true|false
 }}
@@ -548,6 +552,8 @@ Ember.Forms.FormComponent = Ember.Component.extend({
   model: void 0,
   form_layout: 'form',
   submit_button: true,
+  submit_button_text: "Submit",
+  submit_button_class: void 0,
   v_icons: true,
 
   /*
@@ -870,6 +876,49 @@ Em.Forms.FormCheckboxComponent = Em.Forms.FormGroupComponent.extend({
 
 Ember.Handlebars.helper('em-checkbox', function(options) {
   return Ember.Handlebars.helpers.view.call(this, Ember.Forms.FormCheckboxComponent, options);
+});
+
+
+})();
+
+(function() {
+
+
+/*
+Form Select
+
+Syntax:
+{{em-select property="property name"
+    content=array_of_options
+    optionValuePath=keyForValue
+    optionLabelPath=keyForLabel
+    prompt="Optional default prompt"}}
+ */
+Em.Forms.FormSelectComponent = Em.Forms.FormGroupComponent.extend({
+  v_icons: false,
+  controlView: Em.Select.extend(Em.Forms.ControlMixin, {
+    model: Em.computed.alias('parentView.model'),
+    propertyName: Em.computed.alias('parentView.propertyName'),
+    content: Em.computed.alias('parentView.content'),
+    optionValuePath: Em.computed.alias('parentView.optionValuePath'),
+    optionLabelPath: Em.computed.alias('parentView.optionLabelPath'),
+    prompt: Em.computed.alias('parentView.prompt')
+  }),
+  property: void 0,
+  content: void 0,
+  optionValuePath: void 0,
+  optionLabelPath: void 0,
+  prompt: void 0,
+  controlWrapper: (function() {
+    if (this.get('form.form_layout') === 'horizontal') {
+      return 'col-sm-10';
+    }
+    return null;
+  }).property('form.form_layout')
+});
+
+Ember.Handlebars.helper('em-select', function(options) {
+  return Ember.Handlebars.helpers.view.call(this, Ember.Forms.FormSelectComponent, options);
 });
 
 
