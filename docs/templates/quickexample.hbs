@@ -5,6 +5,11 @@
 <div class="well line-example">
     <pre><code class="coffeescript">
         MyController = Em.Controller.extend
+            genderOptions: [
+                {id: 'M', name: 'Male'}
+                {id: 'F', name: 'Female'}
+                {id: 'O', name: 'Other'}
+            ]
             actions:
                 submit:
                     alert "Submitted!"
@@ -20,6 +25,7 @@
             password: DS.attr 'string'
             comment: DS.attr('string')
             active: DS.attr('boolean')
+            gender: DS.attr('string')
             nameHasValue: (->
                 not @get('name')?.length
             ).property('name')
@@ -34,6 +40,8 @@
                     length: { minimum: 6 }
                 comment:
                     presence: true
+                gender:
+                    presence: true
     </code></pre>
 </div>
 
@@ -43,10 +51,11 @@
 <div class="well line-example">
     <pre><code class="coffeescript">
         \{{#em-form model=model}}
-            \{{em-input property="name" label="Full Name" placeholder="Please enter a name."}}
-            \{{em-input property="password" placeholder="Please enter a password." type="password" disabled=nameHasValue}}
-            \{{em-text property="comment" rows=4}}
-            \{{em-checkbox property="active"}}
+            \{{em-input property="name" label="Full Name" placeholder="Enter a name..."}}
+            \{{em-input property="password" label="Password" placeholder="And password..." type="password" disabled=nameHasValue}}
+            \{{em-text property="comment" label="Coment" placeholder="Comment please.." rows=4}}
+            \{{em-select property="gender" label="Gender" prompt="-select-" content=genderOptions optionValuePath="content.id" optionLabelPath="content.name"}}
+            \{{em-checkbox property="active" label="Active?"}}
         \{{/em-form}}
     </code></pre>
 </div>
