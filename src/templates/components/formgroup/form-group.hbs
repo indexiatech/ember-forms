@@ -3,24 +3,24 @@
         {{#if yieldInLabel}}
             {{#if labelWrapperClass}}
                 <div {{bind-attr class=labelWrapperClass}}>
-                    {{partial 'components/_control-within-label'}}
+                    {{partial 'components/formgroup/control-within-label'}}
                 </div>
             {{else}}
-                {{partial 'components/_control-within-label'}}
+                {{partial 'components/formgroup/control-within-label'}}
             {{/if}}
         {{else}}
             {{#if labelWrapperClass}}
                 <div {{bind-attr class=labelWrapperClass}}>
                     {{em-form-label text=label viewName=labelViewName}}
-                    {{partial 'components/_form-group-control'}}
+                    {{partial 'components/formgroup/form-group-control'}}
                 </div>
             {{else}}
                 {{em-form-label text=label viewName=labelViewName}}
-                {{partial 'components/_form-group-control'}}
+                {{partial 'components/formgroup/form-group-control'}}
             {{/if}}
         {{/if}}
     {{else}}
-        {{partial 'components/_form-group-control'}}
+        {{partial 'components/formgroup/form-group-control'}}
     {{/if}}
 
     {{#if v_icons}}
