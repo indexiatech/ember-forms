@@ -1,20 +1,32 @@
 ###
 Form View
 
+A component for rendering a form element.
+
 Syntax:
-{{em-form form_layout="form|inline|horizontal" model="some_model_instance" action="some_action" submit_button="true|false"}}
+{{em-form
+    //The layout of the form
+    form_layout="form|inline|horizontal"
+    //The model bound to the form if any
+    model="some_model_instance"
+    //The action to be invoked on the controller when a form is submitted.
+    action="some_action"
+    //if true a submit button will be rendered
+    submit_button=true|false
+    //if true validation icons will be rendered
+    v_icons=true|false
+}}
 ###
 Ember.Forms.FormComponent = Ember.Component.extend
     tagName: 'form'
-    layoutName: 'form'
+    layoutName: 'components/form'
     classNameBindings: ['form_layout_class']
-    attributesBinding: ['role']
+    attributeBindings: ['role']
     role: 'form'
     form_layout_class: (->
         switch @get('form_layout')
             when 'horizontal', 'inline' then "form-#{@get('form_layout')}"
             else 'form'
-
     ).property('form_layout')
     isDefaultLayout: Ember.Forms.utils.createBoundSwitchAccessor 'form', 'form_layout', 'form'
     isInline: Ember.Forms.utils.createBoundSwitchAccessor 'inline', 'form_layout', 'form'

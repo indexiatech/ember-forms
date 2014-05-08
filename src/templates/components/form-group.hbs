@@ -1,0 +1,7 @@
+{{#if wrapperClass}}
+    <div {{bind-attr class=wrapperClass}}>
+        {{partial 'components/_form-group'}}
+    </div>
+{{else}}
+    {{partial 'components/_form-group'}}
+{{/if}}

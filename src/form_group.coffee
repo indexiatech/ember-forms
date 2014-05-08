@@ -1,72 +1,80 @@
 ###
 Form Group
 
-Wraps labels and controls for optimum spacing and validation styles.
-Currently must be a direct descendant of a form view
+Wraps labels, controls and help message for optimum spacing and validation styles.
+A wrapper for a single input with its assistances views such as label, help message.
+
+A form group can yield the control's view after or within a label, this is dependent on the control
+    required layout and is defined byt he yieldInLabel property
+
 
 Syntax:
 {{em-form-group
-    //The label of the control
-    label="Some Label"
-    //validation state
+    //The state of the form group
     status="none|error|warning|success"
+    //If true the control view is yieled within the label
+    yieldInLabel=true|false
+    //If true validation icons will be rendered, by default inherited from the form
+    v_icons: true
+    //Label of the form group, default is a human friendly form of the property name
+    label="Some label"
 }}
 ###
-Ember.Forms.FormGroupComponent = Ember.Component.extend
+Em.Forms.FormGroupComponent = Em.Component.extend(Em.Forms.InFormMixin,Em.Forms.HasPropertyMixin, Em.Forms.HasPropertyValidationMixin,
     tagName: 'div'
-    layoutName: 'form-group'
-    classNameBindings: ['formGroup', 'hasSuccess', 'hasWarning', 'hasError', 'v_icons:has-feedback']
+    layoutName: 'components/form-group'
+    class: 'form-group'
+    classNameBindings: ['class', 'hasSuccess', 'hasWarning', 'hasError', 'v_icons:has-feedback']
     attributeBindings: ['disabled']
-    model: Ember.computed.alias 'parentView.model'
-    inline: Ember.computed.alias('parentView.isInline')
-    hasSuccess: (-> @get('status') is 'success').property('status')
-    hasWarning: (-> @get('status') is 'warning').property('status')
-    hasError: (-> @get('status') is 'error').property('status')
-    #add form-group class?
-    formGroup: true
-    # has label?
-    label: no
-    #yield inside label?
-    yieldInsideLabel: no
-    #should render icons?
-    v_icons: Ember.computed.alias 'parentView.v_icons'
+
+    hasSuccess: (-> @get('validations') and @get('status') is 'success' and @get('canShowErrors')).property('status', 'canShowErrors')
+    hasWarning: (-> @get('validations') and @get('status') is 'warning' and @get('canShowErrors')).property('status', 'canShowErrors')
+    hasError: (-> @get('validations') and @get('status') is 'error' and @get('canShowErrors')).property('status', 'canShowErrors')
+
+    #should render icons? inherited from form
+    v_icons: Em.computed.alias 'form.v_icons'
+
     v_success_icon: 'fa fa-check'
     v_warn_icon: 'fa fa-exclamation-triangle'
     v_error_icon: 'fa fa-times'
 
+    #Should show validations?
+    validations: true
+
+    yieldInLabel: no
+
     v_icon: (->
+        return if !@get('canShowErrors')
         switch @get('status')
             when 'success' then @get('v_success_icon')
             when 'warning', 'warn' then @get('v_warn_icon')
             when 'error' then @get('v_error_icon')
             else null
-    ).property('status')
+    ).property('status', 'canShowErrors')
 
     init: ->
         @_super()
-        @set 'controlViewName', "control-view-name-#{@get('elementId')}"
-        helpViewName = "help-view-name-#{@get('elementId')}"
-        @set 'helpViewName', helpViewName
-        @set 'labelViewName', "label-view-name-#{@get('elementId')}"
-        # have some help text such an error message?
-        Ember.Binding.from("#{helpViewName}.hasHelp").to('hasHelp').connect(this)
-        Ember.Binding.from("#{helpViewName}.hasError").to('helpHasErrors').connect(this)
 
-    hasErrorChanged: (->
-        if @get('helpHasErrors') then @set('status', 'error') else @set('status', 'success' )
-    ).observes('helpHasErrors')
+#        @set 'controlViewName', "control-view-name-#{@get('elementId')}"
+#        @set 'labelViewName', "label-view-name-#{@get('elementId')}"
+#        helpViewName = "help-view-name-#{@get('elementId')}"
+#        @set 'helpViewName', helpViewName
+#        have some help text such an error message?
+#        Em.Binding.from("#{helpViewName}.hasHelp").to('hasHelp').connect(this)
+        #Em.Binding.from("#{helpViewName}.hasError").to('hasErrors').connect(this)
 
-    labelText: (->
-        @get('label') || Ember.Forms.utils.namelize @get('property')
-    ).property('label')
+    ###
+    Observes the helpHasErrors of the help control and modify the 'status' property accordingly.
+    ###
+    #hasErrorChanged: (->
+    #    if @get('hasErrors') then @set('status', 'error') else @set('status', 'success' )
+    #).observes('hasErrors')
 
-    # read-only
-    hasLabel: (() ->
-        @get('label') isnt no
-    ).property('label').readOnly()
-
+    ###
+    Listen to the focus out of the form group and display the errors
+    ###
     focusOut: ->
         @set('canShowErrors', true)
-        @set 'status', 'success' if not @get('hasError')
+)
 
-Ember.Handlebars.helper('em-form-group', Ember.Forms.FormGroupComponent)
+Em.Handlebars.helper('em-form-group', Em.Forms.FormGroupComponent)

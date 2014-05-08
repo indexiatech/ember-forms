@@ -64,9 +64,14 @@ App.OverviewRoute = Em.Route.extend
 App.QuickexampleRoute = App.OverviewRoute.extend()
 
 App.FormSampleController = Em.Controller.extend
+    layout: 'default'
+
     actions:
         submit: ->
             alert "Submitted!"
+
+        layout: (t) ->
+            @set 'layout', t
 
 App.SidebarController = Em.ArrayController.extend
     content:

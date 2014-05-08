@@ -1,20 +1,33 @@
 ###
 Form Control Help
 
+Renders a textual help of the control.
+
+Note: currently must be a direct descendant of a form-group or 'property' must be explicitly defined
+
 Syntax:
 {{em-form-control-help}}
 ###
-Ember.Forms.FormControlHelpComponent = Ember.Component.extend(
+Em.Forms.FormControlHelpComponent = Em.Component.extend(Em.Forms.InFormMixin, Em.Forms.HasPropertyMixin,
     tagName: 'span'
     classNames: ['help-block']
-    layoutName: 'form-control-help'
-    model: Ember.computed.alias('parentView.model')
-    property: Ember.computed.alias('parentView.property')
+    classNameBindings: ['extraClass', 'horiClassCalc']
+    layoutName: 'components/form-control-help'
+
+    #The text to display
     text: undefined
+    #Extra CSS classes
+    extraClass: undefined
+
+    #TODO: Unit test
+    horiClass: 'col-sm-offset-2 col-sm-10'
+    horiClassCalc: (->
+        @get('horiClass') if @get('form.isHorizontal') and @get('horiClass')
+    ).property('form.isHorizontal')
 
     init: ->
         @_super()
-        Ember.Binding.from('model.errors.' + @get('property')).to('errors').connect(this)
+        Em.Binding.from('model.errors.' + @get('propertyName')).to('errors').connect(this)
 
     helpText: (->
         @get('errors.firstObject') || @get('text')
@@ -29,4 +42,4 @@ Ember.Forms.FormControlHelpComponent = Ember.Component.extend(
     ).property('errors.length')
 )
 
-Ember.Handlebars.helper('em-form-control-help', Ember.Forms.FormControlHelpComponent)
+Em.Handlebars.helper('em-form-control-help', Em.Forms.FormControlHelpComponent)

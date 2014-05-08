@@ -1,17 +1,15 @@
-App.FormGroupComponent = Ember.Forms.FormGroupComponent.extend(
-    layout: Ember.TEMPLATES["form_group"]
+moduleForComponent('form-group', 'Form Group Component'
+    needs: ['template:components/_form-group', 'template:components/_form-group-control', 'template:components/form-label']
 )
 
-moduleForComponent('form-group');
-
-test "form.layout", ->
+test "Form Group rendering", ->
     #Default
-    component = @subject()
-    ok(@$().hasClass('form-group'))
+    component = @subject
+        controlView: Em.View.extend
+            template: Em.Handlebars.compile 'dummy control'
+    ok(@$().hasClass('form-group'), 'DOM element has default form-group class')
 
-    #no label
-    ok(!component.get('hasLabel'))
+    ok(!component.get('hasLabel'), 'group has no label')
     Ember.run(->
         component.set('label', 'hello')
     )
-    ok(component.get('hasLabel'))

@@ -15,7 +15,7 @@ Ember.run(->
 )
 
 emq.globalize()
-setResolver(Ember.DefaultResolver.create({namespace: App}))
+setResolver(Ember.DefaultResolver.create({namespace: Ember.Forms}))
 
 #Run before each test case.
 QUnit.testStart(->

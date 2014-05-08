@@ -6,6 +6,9 @@ Ember.libraries?.register 'Ember Forms', Ember.Forms.VERSION
 
 require 'build/src/utils'
 require 'build/src/control_mixin'
+require 'build/src/has_property_mixin'
+require 'build/src/has_property_validation_mixin'
+require 'build/src/in_form_mixin'
 require 'build/src/templates'
 require 'build/src/form'
 require 'build/src/form_control_help'

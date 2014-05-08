@@ -1,0 +1,38 @@
+{{#unless template}}
+    {{#if label}}
+        {{#if yieldInLabel}}
+            {{#if labelWrapperClass}}
+                <div {{bind-attr class=labelWrapperClass}}>
+                    {{partial 'components/_control-within-label'}}
+                </div>
+            {{else}}
+                {{partial 'components/_control-within-label'}}
+            {{/if}}
+        {{else}}
+            {{#if labelWrapperClass}}
+                <div {{bind-attr class=labelWrapperClass}}>
+                    {{em-form-label text=label viewName=labelViewName}}
+                    {{partial 'components/_form-group-control'}}
+                </div>
+            {{else}}
+                {{em-form-label text=label viewName=labelViewName}}
+                {{partial 'components/_form-group-control'}}
+            {{/if}}
+        {{/if}}
+    {{else}}
+        {{partial 'components/_form-group-control'}}
+    {{/if}}
+
+    {{#if v_icons}}
+        <span class="form-control-feedback"><i {{bind-attr class=v_icon}}></i></span>
+    {{/if}}
+
+    {{!Currently no errors when layout is inline}}
+    {{#unless form.isInline}}
+        {{#if canShowErrors}}
+            {{em-form-control-help text=help viewName=helpViewName}}
+        {{/if}}
+    {{/unless}}
+{{else}}
+    {{yield}}
+{{/unless}}
