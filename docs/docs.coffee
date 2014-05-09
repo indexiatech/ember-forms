@@ -53,8 +53,11 @@ App.Router.map ->
     @route 'getstarted'
     @route 'quickexample'
     @resource 'controls', ->
-        @route 'html5'
+        @route 'input'
         @route 'text'
+        @route 'checkbox'
+        @route 'select'
+        @route 'html5'
 
 App.IndexRoute = Em.Route.extend
     beforeModel: -> @transitionTo('overview')
@@ -80,6 +83,12 @@ App.FormSampleController = Em.Controller.extend
 
         layout: (t) ->
             @set 'layout', t
+App.ControlsSelectController = Em.ObjectController.extend
+    genderOptions: [
+        {id: 'M', name: 'Male'}
+        {id: 'F', name: 'Female'}
+        {id: 'O', name: 'Other'}
+    ]
 
 App.SidebarController = Em.ArrayController.extend
     content:
@@ -88,8 +97,11 @@ App.SidebarController = Em.ArrayController.extend
             {route: 'getstarted', text: 'Getting started', items: []}
             {route: 'quickexample', text: '5 Minutes Example', items: []}
             {route: 'controls', text: 'Controls', items:[
+                    {route: 'controls.input', text: 'Input'}
+                    {route: 'controls.text', text: 'Textarea'}
+                    {route: 'controls.checkbox', text: 'Checkbox'}
+                    {route: 'controls.select', text: 'Select'}
                     {route: 'controls.html5', text: 'Html5'}
-#                    {route: 'controls.text', text: 'Text'}
                 ]
             }
         ]
