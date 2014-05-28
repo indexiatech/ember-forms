@@ -6,8 +6,11 @@ Syntax:
 ###
 Em.Forms.FormInputComponent = Em.Forms.FormGroupComponent.extend(
     controlView: Em.TextField.extend(Em.Forms.ControlMixin,
-        attributeBindings: ['placeholder']
+        attributeBindings: ['placeholder', 'required', 'autofocus', 'disabled']
         placeholder: Em.computed.alias 'parentView.placeholder'
+        required: Em.computed.alias 'parentView.required'
+        autofocus: Em.computed.alias 'parentView.autofocus'
+        disabled: Em.computed.alias 'parentView.disabled'
         type: Em.computed.alias 'parentView.type'
         model: Em.computed.alias 'parentView.model'
         propertyName: Em.computed.alias 'parentView.propertyName'
@@ -17,6 +20,9 @@ Em.Forms.FormInputComponent = Em.Forms.FormGroupComponent.extend(
     property: undefined
     label: undefined
     placeholder: undefined
+    required: undefined
+    autofocus: undefined
+    disabled: undefined
 
     controlWrapper: (->
         return 'col-sm-10' if @get('form.form_layout') is 'horizontal'
