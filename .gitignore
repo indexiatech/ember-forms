@@ -1,5 +1,6 @@
-bower_components
-gh_pages
+vendor
+docs
 build
 node_modules
 .idea
+tmp
