@@ -1,7 +1,7 @@
 {{#if controlWrapper}}
     <div {{bind-attr class=controlWrapper}}>
-        {{view controlView viewName=controlViewName property=propertyName}}
+        {{view controlView viewName=controlViewName property=propertyName id=cid}}
     </div>
 {{else}}
-    {{view controlView viewName=controlViewName property=propertyName}}
+    {{view controlView viewName=controlViewName property=propertyName id=cid}}
 {{/if}}
