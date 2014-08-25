@@ -1,0 +1,2 @@
+"use strict";
+exports["default"] = Ember.Handlebars.compile("{{#em-form-label text=label horiClass=\'\' inlineClass=\'\' viewName=labelViewName}}\n    {{partial \'components/formgroup/form-group-control\'}}\n{{/em-form-label}}");
