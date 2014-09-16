@@ -1,5 +1,8 @@
 #Import all the ember-forms files
 
+#-- General --
+`import { Application } from 'ember';`
+
 #-- Utils --
 `import Utils from './utils/utils';`
 
@@ -38,6 +41,11 @@
 `Ember.TEMPLATES['components/form-label'] = FormLabelTemplate;`
 `Ember.TEMPLATES['components/form-control-help'] = FormControlHelpTemplate;`
 `Ember.TEMPLATES['components/form-submit-button'] = SubmitButtonTemplate;`
+
+Application.initializer
+    name: 'ember-forms',
+    initialize: (container) ->
+        container.register 'component:em-select', FormSelectComponent
 
 #-- Export Everything --
 `export {Utils, ControlMixin, HasPropertyMixin, HasPropertyValidationMixin,

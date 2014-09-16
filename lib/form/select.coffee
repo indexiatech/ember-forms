@@ -35,8 +35,4 @@ FormSelectComponent = FormGroupComponent.extend(
     ).property('form.form_layout')
 )
 
-Ember.Handlebars.helper('em-select', (options) ->
-    Ember.Handlebars.helpers.view.call @, FormSelectComponent, options
-)
-
-`export default FormGroupComponent`
+`export default FormSelectComponent`
