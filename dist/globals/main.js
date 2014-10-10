@@ -51,7 +51,7 @@ Handlebars.helper('em-checkbox', function(options) {
 });
 
 exports["default"] = CheckboxComponent;
-},{"../mixins/control":11,"./checkbox":1,"./group":4}],2:[function(_dereq_,module,exports){
+},{"../mixins/control":12,"./checkbox":1,"./group":4}],2:[function(_dereq_,module,exports){
 "use strict";
 var Component = window.Ember.Component;
 var Binding = window.Ember.Binding;
@@ -104,7 +104,7 @@ FormControlHelpComponent = Component.extend(InFormMixin, HasPropertyMixin, {
 Handlebars.helper('em-form-control-help', FormControlHelpComponent);
 
 exports["default"] = FormControlHelpComponent;
-},{"../mixins/has_property":12,"../mixins/in_form":14}],3:[function(_dereq_,module,exports){
+},{"../mixins/has_property":13,"../mixins/in_form":15}],3:[function(_dereq_,module,exports){
 "use strict";
 var Component = window.Ember.Component;
 var Handlebars = window.Ember.Handlebars;
@@ -183,7 +183,7 @@ FormComponent = Component.extend({
 Handlebars.helper('em-form', FormComponent);
 
 exports["default"] = FormComponent;
-},{"../utils/utils":23}],4:[function(_dereq_,module,exports){
+},{"../utils/utils":25}],4:[function(_dereq_,module,exports){
 "use strict";
 var Component = window.Ember.Component;
 var InFormMixin = _dereq_("../mixins/in_form")["default"] || _dereq_("../mixins/in_form");
@@ -270,7 +270,7 @@ FormGroupComponent = Component.extend(InFormMixin, HasPropertyMixin, HasProperty
 Em.Handlebars.helper('em-form-group', FormGroupComponent);
 
 exports["default"] = FormGroupComponent;
-},{"../mixins/has_property":12,"../mixins/has_property_validation":13,"../mixins/in_form":14}],5:[function(_dereq_,module,exports){
+},{"../mixins/has_property":13,"../mixins/has_property_validation":14,"../mixins/in_form":15}],5:[function(_dereq_,module,exports){
 "use strict";
 var FormGroupComponent = _dereq_("./group")["default"] || _dereq_("./group");
 var ControlMixin = _dereq_("../mixins/control")["default"] || _dereq_("../mixins/control");
@@ -313,7 +313,7 @@ Ember.Handlebars.helper('em-input', function(options) {
 });
 
 exports["default"] = FormGroupComponent;
-},{"../mixins/control":11,"./group":4}],6:[function(_dereq_,module,exports){
+},{"../mixins/control":12,"./group":4}],6:[function(_dereq_,module,exports){
 "use strict";
 var Component = window.Ember.Component;
 var InFormMixin = _dereq_("../mixins/in_form")["default"] || _dereq_("../mixins/in_form");
@@ -360,7 +360,7 @@ FormLabelComponent = Ember.Component.extend(InFormMixin, {
 Ember.Handlebars.helper('em-form-label', FormLabelComponent);
 
 exports["default"] = FormLabelComponent;
-},{"../mixins/in_form":14}],7:[function(_dereq_,module,exports){
+},{"../mixins/in_form":15}],7:[function(_dereq_,module,exports){
 "use strict";
 var FormGroupComponent = _dereq_("./group")["default"] || _dereq_("./group");
 var ControlMixin = _dereq_("../mixins/control")["default"] || _dereq_("../mixins/control");
@@ -400,12 +400,8 @@ FormSelectComponent = FormGroupComponent.extend({
   }).property('form.form_layout')
 });
 
-Ember.Handlebars.helper('em-select', function(options) {
-  return Ember.Handlebars.helpers.view.call(this, FormSelectComponent, options);
-});
-
-exports["default"] = FormGroupComponent;
-},{"../mixins/control":11,"./group":4}],8:[function(_dereq_,module,exports){
+exports["default"] = FormSelectComponent;
+},{"../mixins/control":12,"./group":4}],8:[function(_dereq_,module,exports){
 "use strict";
 var Component = window.Ember.Component;
 var InFormMixin = _dereq_("../mixins/in_form")["default"] || _dereq_("../mixins/in_form");
@@ -438,7 +434,7 @@ FormSubmitComponent = Component.extend(InFormMixin, {
 Ember.Handlebars.helper('em-form-submit', FormSubmitComponent);
 
 exports["default"] = FormSubmitComponent;
-},{"../mixins/in_form":14}],9:[function(_dereq_,module,exports){
+},{"../mixins/in_form":15}],9:[function(_dereq_,module,exports){
 "use strict";
 var computed = window.Ember.computed;
 var TextArea = window.Ember.TextArea;
@@ -479,8 +475,28 @@ Ember.Handlebars.helper('em-text', function(options) {
 });
 
 exports["default"] = FormGroupComponent;
-},{"../mixins/control":11,"./group":4}],10:[function(_dereq_,module,exports){
+},{"../mixins/control":12,"./group":4}],10:[function(_dereq_,module,exports){
 "use strict";
+var InlineInput;
+
+InlineInput = Ember.Component.extend({
+  tagName: 'span',
+  attributeBindings: ['href'],
+  href: '#',
+  layoutName: 'components/em-il-input',
+  edit: false,
+  componentClicked: (function(e) {
+    return this.set('edit', true);
+  }).on('click')
+});
+
+Ember.Handlebars.helper('em-il-input', InlineInput);
+
+exports["default"] = InlineInput;
+},{}],11:[function(_dereq_,module,exports){
+"use strict";
+var Application = window.Ember.Application;
+
 var Utils = _dereq_("./utils/utils")["default"] || _dereq_("./utils/utils");
 
 var ControlMixin = _dereq_("./mixins/control")["default"] || _dereq_("./mixins/control");
@@ -509,6 +525,8 @@ var FormSubmitComponent = _dereq_("./form/submit_button")["default"] || _dereq_(
 
 var FormTextComponent = _dereq_("./form/text")["default"] || _dereq_("./form/text");
 
+var FormInlineComponent = _dereq_("./inline/em-il-input")["default"] || _dereq_("./inline/em-il-input");
+
 var FormTemplate = _dereq_("./templates/components/form")["default"] || _dereq_("./templates/components/form");
 
 var FormGroupTemplate = _dereq_("./templates/components/form-group")["default"] || _dereq_("./templates/components/form-group");
@@ -525,6 +543,8 @@ var FormControlHelpTemplate = _dereq_("./templates/components/form-control-help"
 
 var SubmitButtonTemplate = _dereq_("./templates/components/form-submit-button")["default"] || _dereq_("./templates/components/form-submit-button");
 
+var InlineInputTemplate = _dereq_("./templates/components/em-il-input")["default"] || _dereq_("./templates/components/em-il-input");
+
 Ember.TEMPLATES['components/form'] = FormTemplate;;
 Ember.TEMPLATES['components/form-group'] = FormGroupTemplate;;
 Ember.TEMPLATES['components/formgroup/form-group'] = FormGroupPartialTemplate;;
@@ -533,6 +553,14 @@ Ember.TEMPLATES['components/formgroup/control-within-label'] = FormGroupControlW
 Ember.TEMPLATES['components/form-label'] = FormLabelTemplate;;
 Ember.TEMPLATES['components/form-control-help'] = FormControlHelpTemplate;;
 Ember.TEMPLATES['components/form-submit-button'] = SubmitButtonTemplate;;
+Ember.TEMPLATES['components/em-il-input'] = InlineInputTemplate;;
+Application.initializer({
+  name: 'ember-forms',
+  initialize: function(container) {
+    return container.register('component:em-select', FormSelectComponent);
+  }
+});
+
 exports.Utils = Utils;
 exports.ControlMixin = ControlMixin;
 exports.HasPropertyMixin = HasPropertyMixin;
@@ -546,7 +574,7 @@ exports.FormLabelComponent = FormLabelComponent;
 exports.FormSelectComponent = FormSelectComponent;
 exports.FormSubmitComponent = FormSubmitComponent;
 exports.FormTextComponent = FormTextComponent;
-},{"./form/checkbox":1,"./form/control_help":2,"./form/form":3,"./form/group":4,"./form/input":5,"./form/label":6,"./form/select":7,"./form/submit_button":8,"./form/text":9,"./mixins/control":11,"./mixins/has_property":12,"./mixins/has_property_validation":13,"./mixins/in_form":14,"./templates/components/form":19,"./templates/components/form-control-help":15,"./templates/components/form-group":16,"./templates/components/form-label":17,"./templates/components/form-submit-button":18,"./templates/components/formgroup/control-within-label":20,"./templates/components/formgroup/form-group":22,"./templates/components/formgroup/form-group-control":21,"./utils/utils":23}],11:[function(_dereq_,module,exports){
+},{"./form/checkbox":1,"./form/control_help":2,"./form/form":3,"./form/group":4,"./form/input":5,"./form/label":6,"./form/select":7,"./form/submit_button":8,"./form/text":9,"./inline/em-il-input":10,"./mixins/control":12,"./mixins/has_property":13,"./mixins/has_property_validation":14,"./mixins/in_form":15,"./templates/components/em-il-input":16,"./templates/components/form":21,"./templates/components/form-control-help":17,"./templates/components/form-group":18,"./templates/components/form-label":19,"./templates/components/form-submit-button":20,"./templates/components/formgroup/control-within-label":22,"./templates/components/formgroup/form-group":24,"./templates/components/formgroup/form-group-control":23,"./utils/utils":25}],12:[function(_dereq_,module,exports){
 "use strict";
 var Mixin = window.Ember.Mixin;
 var Binding = window.Ember.Binding;
@@ -569,7 +597,7 @@ ControlMixin = Mixin.create({
 });
 
 exports["default"] = ControlMixin;
-},{}],12:[function(_dereq_,module,exports){
+},{}],13:[function(_dereq_,module,exports){
 "use strict";
 var Mixin = window.Ember.Mixin;
 var Binding = window.Ember.Binding;
@@ -603,7 +631,7 @@ HasPropertyMixin = Mixin.create({
 });
 
 exports["default"] = HasPropertyMixin;
-},{}],13:[function(_dereq_,module,exports){
+},{}],14:[function(_dereq_,module,exports){
 "use strict";
 var Mixin = window.Ember.Mixin;
 var Binding = window.Ember.Binding;
@@ -633,7 +661,7 @@ HasPropertyValidationMixin = Mixin.create({
 });
 
 exports["default"] = HasPropertyValidationMixin;
-},{}],14:[function(_dereq_,module,exports){
+},{}],15:[function(_dereq_,module,exports){
 "use strict";
 var Mixin = window.Ember.Mixin;
 var Binding = window.Ember.Binding;
@@ -662,31 +690,34 @@ InFormMixin = Mixin.create({
 });
 
 exports["default"] = InFormMixin;
-},{}],15:[function(_dereq_,module,exports){
-"use strict";
-exports["default"] = Ember.Handlebars.compile("{{helpText}}");
 },{}],16:[function(_dereq_,module,exports){
 "use strict";
-exports["default"] = Ember.Handlebars.compile("{{#if wrapperClass}}\n    <div {{bind-attr class=wrapperClass}}>\n        {{partial \'components/formgroup/form-group\'}}\n    </div>\n{{else}}\n    {{partial \'components/formgroup/form-group\'}}\n{{/if}}");
+exports["default"] = Ember.Handlebars.compile("{{#if edit}}\n    {{#em-form form_layout=\"inline\"}}\n        {{em-input}}\n    {{/em-form}}\n{{else}}\n    {{yield}}\n{{/if}}");
 },{}],17:[function(_dereq_,module,exports){
 "use strict";
-exports["default"] = Ember.Handlebars.compile("{{yield}}\n{{text}}");
+exports["default"] = Ember.Handlebars.compile("{{helpText}}");
 },{}],18:[function(_dereq_,module,exports){
 "use strict";
-exports["default"] = Ember.Handlebars.compile("{{#if form.isHorizontal}}\n    <div {{bind-attr class=horiClass}}>\n        <button {{bind-attr class=classes}} {{bind-attr disabled=disabled}}>{{text}}</button>\n    </div>\n{{else}}\n    <button {{bind-attr class=classes}} {{bind-attr disabled=disabled}}>{{text}}</button>\n{{/if}}\n");
+exports["default"] = Ember.Handlebars.compile("{{#if wrapperClass}}\n    <div {{bind-attr class=wrapperClass}}>\n        {{partial \'components/formgroup/form-group\'}}\n    </div>\n{{else}}\n    {{partial \'components/formgroup/form-group\'}}\n{{/if}}");
 },{}],19:[function(_dereq_,module,exports){
 "use strict";
-exports["default"] = Ember.Handlebars.compile("{{yield}}\n{{#if submit_button}}\n    {{em-form-submit}}\n{{/if}}");
+exports["default"] = Ember.Handlebars.compile("{{yield}}\n{{text}}");
 },{}],20:[function(_dereq_,module,exports){
 "use strict";
-exports["default"] = Ember.Handlebars.compile("{{#em-form-label text=label horiClass=\'\' inlineClass=\'\' viewName=labelViewName}}\n    {{partial \'components/formgroup/form-group-control\'}}\n{{/em-form-label}}");
+exports["default"] = Ember.Handlebars.compile("{{#if form.isHorizontal}}\n    <div {{bind-attr class=horiClass}}>\n        <button {{bind-attr class=classes}} {{bind-attr disabled=disabled}}>{{text}}</button>\n    </div>\n{{else}}\n    <button {{bind-attr class=classes}} {{bind-attr disabled=disabled}}>{{text}}</button>\n{{/if}}\n");
 },{}],21:[function(_dereq_,module,exports){
 "use strict";
-exports["default"] = Ember.Handlebars.compile("{{#if controlWrapper}}\n    <div {{bind-attr class=controlWrapper}}>\n        {{view controlView viewName=controlViewName property=propertyName id=cid}}\n    </div>\n{{else}}\n    {{view controlView viewName=controlViewName property=propertyName id=cid}}\n{{/if}}");
+exports["default"] = Ember.Handlebars.compile("{{yield}}\n{{#if submit_button}}\n    {{em-form-submit}}\n{{/if}}");
 },{}],22:[function(_dereq_,module,exports){
 "use strict";
-exports["default"] = Ember.Handlebars.compile("{{#unless template}}\n    {{#if label}}\n        {{#if yieldInLabel}}\n            {{#if labelWrapperClass}}\n                <div {{bind-attr class=labelWrapperClass}}>\n                    {{partial \'components/formgroup/control-within-label\'}}\n                </div>\n            {{else}}\n                {{partial \'components/formgroup/control-within-label\'}}\n            {{/if}}\n        {{else}}\n            {{#if labelWrapperClass}}\n                <div {{bind-attr class=labelWrapperClass}}>\n                    {{em-form-label text=label viewName=labelViewName}}\n                    {{partial \'components/formgroup/form-group-control\'}}\n                </div>\n            {{else}}\n                {{em-form-label text=label viewName=labelViewName}}\n                {{partial \'components/formgroup/form-group-control\'}}\n            {{/if}}\n        {{/if}}\n    {{else}}\n        {{partial \'components/formgroup/form-group-control\'}}\n    {{/if}}\n\n    {{#if v_icons}}\n        <span class=\"form-control-feedback\"><i {{bind-attr class=v_icon}}></i></span>\n    {{/if}}\n\n    {{!Currently no errors when layout is inline}}\n    {{#unless form.isInline}}\n        {{#if canShowErrors}}\n            {{em-form-control-help text=help viewName=helpViewName}}\n        {{/if}}\n    {{/unless}}\n{{else}}\n    {{yield}}\n{{/unless}}");
+exports["default"] = Ember.Handlebars.compile("{{#em-form-label text=label horiClass=\'\' inlineClass=\'\' viewName=labelViewName}}\n    {{partial \'components/formgroup/form-group-control\'}}\n{{/em-form-label}}");
 },{}],23:[function(_dereq_,module,exports){
+"use strict";
+exports["default"] = Ember.Handlebars.compile("{{#if controlWrapper}}\n    <div {{bind-attr class=controlWrapper}}>\n        {{view controlView viewName=controlViewName property=propertyName id=cid}}\n    </div>\n{{else}}\n    {{view controlView viewName=controlViewName property=propertyName id=cid}}\n{{/if}}");
+},{}],24:[function(_dereq_,module,exports){
+"use strict";
+exports["default"] = Ember.Handlebars.compile("{{#unless template}}\n    {{#if label}}\n        {{#if yieldInLabel}}\n            {{#if labelWrapperClass}}\n                <div {{bind-attr class=labelWrapperClass}}>\n                    {{partial \'components/formgroup/control-within-label\'}}\n                </div>\n            {{else}}\n                {{partial \'components/formgroup/control-within-label\'}}\n            {{/if}}\n        {{else}}\n            {{#if labelWrapperClass}}\n                <div {{bind-attr class=labelWrapperClass}}>\n                    {{em-form-label text=label viewName=labelViewName}}\n                    {{partial \'components/formgroup/form-group-control\'}}\n                </div>\n            {{else}}\n                {{em-form-label text=label viewName=labelViewName}}\n                {{partial \'components/formgroup/form-group-control\'}}\n            {{/if}}\n        {{/if}}\n    {{else}}\n        {{partial \'components/formgroup/form-group-control\'}}\n    {{/if}}\n\n    {{#if v_icons}}\n        <span class=\"form-control-feedback\"><i {{bind-attr class=v_icon}}></i></span>\n    {{/if}}\n\n    {{!Currently no errors when layout is inline}}\n    {{#unless form.isInline}}\n        {{#if canShowErrors}}\n            {{em-form-control-help text=help viewName=helpViewName}}\n        {{/if}}\n    {{/unless}}\n{{else}}\n    {{yield}}\n{{/unless}}");
+},{}],25:[function(_dereq_,module,exports){
 "use strict";
 var Utils;
 
@@ -708,6 +739,6 @@ Utils = {
 };
 
 exports["default"] = Utils;
-},{}]},{},[10])
-(10)
+},{}]},{},[11])
+(11)
 });
