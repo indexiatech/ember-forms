@@ -1,5 +1,5 @@
 moduleForComponent('form-group', 'Form Group Component'
-    needs: ['template:components/_form-group', 'template:components/_form-group-control', 'template:components/form-label']
+    needs: ['template:components/formgroup/form-group', 'template:components/formgroup/form-group-control', 'template:components/form-label']
 )
 
 test "Form Group rendering", ->

@@ -1,18 +1,17 @@
 {
     "framework": "qunit",
-    "before_tests": "coffee -c tests/*.spec.coffee",
-    "after_tests": "rm tests/*.spec.js",
+    "before_tests": "coffee -c tests/*.coffee",
+    "after_tests": "rm tests/*.js",
     "src_files": [
-      "tests/**/*.spec.coffee"
+      "tests/*.coffee"
     ],
     "serve_files": [
       "vendor/jquery/dist/jquery.js",
       "vendor/handlebars/handlebars.js",
       "vendor/ember/ember.js",
       "vendor/ember-qunit/dist/globals/main.js",
-      "dist/ember_forms.js",
-      "test/support/setup.js",
-      "test/**/*.spec.js"
+      "dist/globals/main.js",
+      "tests/*.js"
     ],
     "launch_in_dev": ["PhantomJS"],
     "launch_in_ci": ["PhantomJS"]
