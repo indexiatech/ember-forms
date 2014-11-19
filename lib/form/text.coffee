@@ -29,8 +29,4 @@ FormTextComponent = FormGroupComponent.extend(
     ).property('form.form_layout')
 )
 
-Ember.Handlebars.helper('em-text', (options) ->
-    Handlebars.helpers.view.call @, FormTextComponent, options
-)
-
-`export default FormGroupComponent`
+`export default FormTextComponent`

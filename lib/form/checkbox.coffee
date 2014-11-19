@@ -37,8 +37,4 @@ CheckboxComponent = FormGroupComponent.extend(
     ).property('form.form_layout')
 )
 
-Handlebars.helper('em-checkbox', (options) ->
-    Handlebars.helpers.view.call @, CheckboxComponent, options
-)
-
 `export default CheckboxComponent`

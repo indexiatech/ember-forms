@@ -1,6 +1,5 @@
 `import {Component, Binding, Handlebars} from 'ember'`
 `import InFormMixin from '../mixins/in_form'`
-`import HasPropertyMixin from '../mixins/has_property'`
 
 ###
 Form Control Help
@@ -12,7 +11,7 @@ Note: currently must be a direct descendant of a form-group or 'property' must b
 Syntax:
 {{em-form-control-help}}
 ###
-FormControlHelpComponent = Component.extend(InFormMixin, HasPropertyMixin,
+FormControlHelpComponent = Component.extend(InFormMixin,
     tagName: 'span'
     classNames: ['help-block']
     classNameBindings: ['extraClass', 'horiClassCalc']
@@ -31,7 +30,7 @@ FormControlHelpComponent = Component.extend(InFormMixin, HasPropertyMixin,
 
     init: ->
         @_super()
-        Binding.from('model.errors.' + @get('propertyName')).to('errors').connect(this)
+        Binding.from('model.errors.' + @get('parentView.propertyName')).to('errors').connect(this)
 
     helpText: (->
         @get('errors.firstObject') || @get('text')

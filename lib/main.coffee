@@ -46,6 +46,9 @@ Application.initializer
     name: 'ember-forms',
     initialize: (container) ->
         container.register 'component:em-select', FormSelectComponent
+        container.register 'component:em-input', FormInputComponent
+        container.register 'component:em-checkbox', FormCheckboxComponent
+        container.register 'component:em-text', FormTextComponent
 
 #-- Export Everything --
 `export {Utils, ControlMixin, HasPropertyMixin, HasPropertyValidationMixin,

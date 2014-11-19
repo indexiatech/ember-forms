@@ -31,10 +31,24 @@ FormGroupComponent = Component.extend(InFormMixin, HasPropertyMixin, HasProperty
     class: 'form-group'
     classNameBindings: ['class', 'hasSuccess', 'hasWarning', 'hasError', 'v_icons:has-feedback']
     attributeBindings: ['disabled']
+    canShowErrors: false
 
-    hasSuccess: (-> @get('validations') and @get('status') is 'success' and @get('canShowErrors')).property('status', 'canShowErrors')
-    hasWarning: (-> @get('validations') and @get('status') is 'warning' and @get('canShowErrors')).property('status', 'canShowErrors')
-    hasError: (-> @get('validations') and @get('status') is 'error' and @get('canShowErrors')).property('status', 'canShowErrors')
+
+    hasSuccess: (-> 
+        success = @get('validations') and @get('status') is 'success' and @get('canShowErrors')
+        @set 'success', success
+        success
+    ).property('status', 'canShowErrors')
+    hasWarning: (-> 
+        warning = @get('validations') and @get('status') is 'warning' and @get('canShowErrors')
+        @set 'warning', warning
+        warning
+    ).property('status', 'canShowErrors')
+    hasError: (-> 
+        error = @get('validations') and @get('status') is 'error' and @get('canShowErrors')
+        @set 'error', error
+        error
+    ).property('status', 'canShowErrors')
 
     #should render icons? inherited from form
     v_icons: Em.computed.alias 'form.v_icons'
