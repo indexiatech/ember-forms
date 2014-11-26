@@ -33,8 +33,4 @@ FormTextComponent = FormGroupComponent.extend({
   }).property('form.form_layout')
 });
 
-Ember.Handlebars.helper('em-text', function(options) {
-  return Handlebars.helpers.view.call(this, FormTextComponent, options);
-});
-
-exports["default"] = FormGroupComponent;
+exports["default"] = FormTextComponent;

@@ -29,8 +29,6 @@ var FormSubmitComponent = require("./form/submit_button")["default"] || require(
 
 var FormTextComponent = require("./form/text")["default"] || require("./form/text");
 
-var FormInlineComponent = require("./inline/em-il-input")["default"] || require("./inline/em-il-input");
-
 var FormTemplate = require("./templates/components/form")["default"] || require("./templates/components/form");
 
 var FormGroupTemplate = require("./templates/components/form-group")["default"] || require("./templates/components/form-group");
@@ -47,8 +45,6 @@ var FormControlHelpTemplate = require("./templates/components/form-control-help"
 
 var SubmitButtonTemplate = require("./templates/components/form-submit-button")["default"] || require("./templates/components/form-submit-button");
 
-var InlineInputTemplate = require("./templates/components/em-il-input")["default"] || require("./templates/components/em-il-input");
-
 Ember.TEMPLATES['components/form'] = FormTemplate;;
 Ember.TEMPLATES['components/form-group'] = FormGroupTemplate;;
 Ember.TEMPLATES['components/formgroup/form-group'] = FormGroupPartialTemplate;;
@@ -57,11 +53,13 @@ Ember.TEMPLATES['components/formgroup/control-within-label'] = FormGroupControlW
 Ember.TEMPLATES['components/form-label'] = FormLabelTemplate;;
 Ember.TEMPLATES['components/form-control-help'] = FormControlHelpTemplate;;
 Ember.TEMPLATES['components/form-submit-button'] = SubmitButtonTemplate;;
-Ember.TEMPLATES['components/em-il-input'] = InlineInputTemplate;;
 Application.initializer({
   name: 'ember-forms',
   initialize: function(container) {
-    return container.register('component:em-select', FormSelectComponent);
+    container.register('component:em-select', FormSelectComponent);
+    container.register('component:em-input', FormInputComponent);
+    container.register('component:em-checkbox', FormCheckboxComponent);
+    return container.register('component:em-text', FormTextComponent);
   }
 });
 

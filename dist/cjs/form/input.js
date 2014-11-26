@@ -8,9 +8,9 @@ Form Input
 Syntax:
 {{em-input property="property name"}}
  */
-var FormInputComponent;
+var InputComponent;
 
-FormInputComponent = FormGroupComponent.extend({
+InputComponent = FormGroupComponent.extend({
   controlView: Em.TextField.extend(ControlMixin, {
     attributeBindings: ['placeholder', 'required', 'autofocus', 'disabled'],
     placeholder: Em.computed.alias('parentView.placeholder'),
@@ -35,8 +35,4 @@ FormInputComponent = FormGroupComponent.extend({
   }).property('form.form_layout')
 });
 
-Ember.Handlebars.helper('em-input', function(options) {
-  return Ember.Handlebars.helpers.view.call(this, FormInputComponent, options);
-});
-
-exports["default"] = FormGroupComponent;
+exports["default"] = InputComponent;

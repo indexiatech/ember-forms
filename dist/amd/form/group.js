@@ -37,14 +37,24 @@ define(
       "class": 'form-group',
       classNameBindings: ['class', 'hasSuccess', 'hasWarning', 'hasError', 'v_icons:has-feedback'],
       attributeBindings: ['disabled'],
+      canShowErrors: false,
       hasSuccess: (function() {
-        return this.get('validations') && this.get('status') === 'success' && this.get('canShowErrors');
+        var success;
+        success = this.get('validations') && this.get('status') === 'success' && this.get('canShowErrors');
+        this.set('success', success);
+        return success;
       }).property('status', 'canShowErrors'),
       hasWarning: (function() {
-        return this.get('validations') && this.get('status') === 'warning' && this.get('canShowErrors');
+        var warning;
+        warning = this.get('validations') && this.get('status') === 'warning' && this.get('canShowErrors');
+        this.set('warning', warning);
+        return warning;
       }).property('status', 'canShowErrors'),
       hasError: (function() {
-        return this.get('validations') && this.get('status') === 'error' && this.get('canShowErrors');
+        var error;
+        error = this.get('validations') && this.get('status') === 'error' && this.get('canShowErrors');
+        this.set('error', error);
+        return error;
       }).property('status', 'canShowErrors'),
       v_icons: Em.computed.alias('form.v_icons'),
       v_success_icon: 'fa fa-check',

@@ -3,7 +3,6 @@ var Component = require("ember").Component;
 var Binding = require("ember").Binding;
 var Handlebars = require("ember").Handlebars;
 var InFormMixin = require("../mixins/in_form")["default"] || require("../mixins/in_form");
-var HasPropertyMixin = require("../mixins/has_property")["default"] || require("../mixins/has_property");
 
 /*
 Form Control Help
@@ -17,7 +16,7 @@ Syntax:
  */
 var FormControlHelpComponent;
 
-FormControlHelpComponent = Component.extend(InFormMixin, HasPropertyMixin, {
+FormControlHelpComponent = Component.extend(InFormMixin, {
   tagName: 'span',
   classNames: ['help-block'],
   classNameBindings: ['extraClass', 'horiClassCalc'],
@@ -32,7 +31,7 @@ FormControlHelpComponent = Component.extend(InFormMixin, HasPropertyMixin, {
   }).property('form.isHorizontal'),
   init: function() {
     this._super();
-    return Binding.from('model.errors.' + this.get('propertyName')).to('errors').connect(this);
+    return Binding.from('model.errors.' + this.get('parentView.propertyName')).to('errors').connect(this);
   },
   helpText: (function() {
     return this.get('errors.firstObject') || this.get('text');

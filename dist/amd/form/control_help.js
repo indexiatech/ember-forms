@@ -1,12 +1,11 @@
 define(
-  ["ember","../mixins/in_form","../mixins/has_property","exports"],
-  function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
+  ["ember","../mixins/in_form","exports"],
+  function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
     var Component = __dependency1__.Component;
     var Binding = __dependency1__.Binding;
     var Handlebars = __dependency1__.Handlebars;
     var InFormMixin = __dependency2__["default"] || __dependency2__;
-    var HasPropertyMixin = __dependency3__["default"] || __dependency3__;
 
     /*
     Form Control Help
@@ -20,7 +19,7 @@ define(
      */
     var FormControlHelpComponent;
 
-    FormControlHelpComponent = Component.extend(InFormMixin, HasPropertyMixin, {
+    FormControlHelpComponent = Component.extend(InFormMixin, {
       tagName: 'span',
       classNames: ['help-block'],
       classNameBindings: ['extraClass', 'horiClassCalc'],
@@ -35,7 +34,7 @@ define(
       }).property('form.isHorizontal'),
       init: function() {
         this._super();
-        return Binding.from('model.errors.' + this.get('propertyName')).to('errors').connect(this);
+        return Binding.from('model.errors.' + this.get('parentView.propertyName')).to('errors').connect(this);
       },
       helpText: (function() {
         return this.get('errors.firstObject') || this.get('text');

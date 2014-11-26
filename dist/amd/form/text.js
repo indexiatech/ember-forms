@@ -36,9 +36,5 @@ define(
       }).property('form.form_layout')
     });
 
-    Ember.Handlebars.helper('em-text', function(options) {
-      return Handlebars.helpers.view.call(this, FormTextComponent, options);
-    });
-
-    __exports__["default"] = FormGroupComponent;
+    __exports__["default"] = FormTextComponent;
   });

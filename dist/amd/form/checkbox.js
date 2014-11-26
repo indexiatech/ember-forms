@@ -48,9 +48,5 @@ define(
       }).property('form.form_layout')
     });
 
-    Handlebars.helper('em-checkbox', function(options) {
-      return Handlebars.helpers.view.call(this, CheckboxComponent, options);
-    });
-
     __exports__["default"] = CheckboxComponent;
   });
