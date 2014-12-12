@@ -8,21 +8,24 @@ module.exports = {
 
     included: function( app ) {
         this._super.included( app );
-        if ( app.env === 'development' ) {
+        var isDummy = app.name === 'dummy'
+
+        if (isDummy) {
             app.import( 'bower_components/bootstrap/dist/css/bootstrap-theme.css.map' );
+
+            app.import({
+                development : 'bower_components/bootstrap/dist/css/bootstrap.css'
+            });
+            app.import({
+                development : 'bower_components/fontawesome/css/font-awesome.min.css'
+            });
+            app.import({
+                development : 'bower_components/highlightjs/highlight.pack.js'
+            });
+            app.import({
+                development : 'bower_components/highlightjs/styles/tomorrow.css'
+            });
         }
-        app.import({
-            development : 'bower_components/bootstrap/dist/css/bootstrap.css'
-        });
-        app.import({
-            development : 'bower_components/fontawesome/css/font-awesome.min.css'
-        });
-        app.import({
-            development : 'bower_components/highlightjs/highlight.pack.js'
-        });
-        app.import({
-            development : 'bower_components/highlightjs/styles/tomorrow.css'
-        });
     },
 
     postprocessTree: function( type, tree ) {
