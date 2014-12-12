@@ -1,0 +1,39 @@
+<h3>Form</h3>
+
+<p>
+\{{em-form}} is rendered as HTML <i>&lt;form&gt;</i> tag and acts as a container for the input fields
+of the form.
+</p>
+<p>
+The form component can be bound to a <i>model</i> to support better bindings &amp; validations, it also can get rendered in different layouts.
+</p>
+
+<h2>Markup</h2>
+<div class="well line-example">
+    <pre><code class="handlebars">
+        \{{#em-form form_layout="horizontal" model=someModel action="some-action"}}
+            \{{em-input label="Name" property="name"}}
+            other controls here...
+        \{{/em-form}}
+    </code></pre>
+</div>
+
+
+<h2>Result</h2>
+<div class="well line-example">
+    {{#em-form form_layout="horizontal" model=someModel action="some-action"}}
+        {{em-input label="Name" property="name"}}
+    {{/em-form}}
+</div>
+
+<h2>Parameters</h2>
+<p>\{{em-form}} can accept the following parameters</p>
+
+<table class="table table-striped">
+    <tr><th>Param name</th><th>Description</th><th>Default</th></tr>
+    <tr><td>form_layout</td><td>Can be: default | inline | horizontal</td><td>default</td></tr>
+    <tr><td>model</td><td>Can be bound to some model, then every control's <i>property</i> will be bound to the given model's property.</td><td>none</td></tr>
+    <tr><td>action</td><td>The action to invoke on the controller when form is submitted.</td><td>submit</td></tr>
+    <tr><td>submit_button</td><td>boolean, if true a submit button will be rendered.</td><td>true</td></tr>
+    <tr><Td>v_icons</td><td>boolean, if true validation icons will be rendered per input control.</td><td>true</td></tr>
+</table>

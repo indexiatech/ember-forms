@@ -1,2 +1,0 @@
-"use strict";
-exports["default"] = Ember.Handlebars.compile("{{#if wrapperClass}}\n    <div {{bind-attr class=wrapperClass}}>\n        {{partial \'components/formgroup/form-group\'}}\n    </div>\n{{else}}\n    {{partial \'components/formgroup/form-group\'}}\n{{/if}}");

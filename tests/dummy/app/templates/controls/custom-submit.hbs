@@ -1,0 +1,65 @@
+<h3>Custom Submit Button</h3>
+
+<p>
+It is possible to have a custom submit button by not rendering the default submit button and adding a custom button of your own.
+</p>
+
+<h2>Markup</h2>
+<div class="well line-example">
+    <pre><code class="handlebars">
+        \{{#em-form model=model submit_button=false}}
+        &lt;div class="form-actions"&gt;
+            &lt;input \{{bind-attr disabled=isntValid}} type="submit" class="btn btn-primary" value="Login"&gt;
+        &lt;/div&gt;
+        \{{/em-form}}
+    </code></pre>
+</div>
+
+<p>
+Few things happen here:
+<ol>
+    <li>Bind the controller's model to the <i>model</i> property of the form component.</li>
+    <li>Disable rendering the default submit button by setting <i>submit_button=false</i></li>
+    <li>We add an input button (type must be <i>submit</i>) and bind its <i>disabled</i> property to the <i>isntValid</i> property of our controller/model</li>
+</ol>
+</p>
+
+<h2>Controller/Model</h2>
+<div class="well line-example">
+    <pre><code class="coffeescript">
+    #Our Model
+    Credentials = DS.Model.extend(Em.Validations.Mixin,
+        user: DS.attr('string')
+        password:  DS.attr('string')
+        #Opposite if isValid, required to judge whether the submit button should be disabled or not.
+        isntValid: Em.computed.not 'isValid'
+    )
+
+    Credentials.reopen
+        validations:
+            user:
+                presence: true
+                length: { minimum: 3 }
+            password:
+                presence: true
+                length: { minimum: 4 }
+
+    #Our controller
+    CustomSubmitButton = Em.ObjectController.extend
+    actions:
+        submit: ->
+            alert "Logged in!"
+
+    </code></pre>
+</div>
+
+<h2>Result</h2>
+<div class="well line-example">
+    {{#em-form model=model submit_button=false}}
+        {{em-input label="Name" property="user"}}
+        {{em-input label="Password" property="password"}}
+        <div class="form-actions">
+            <input {{bind-attr disabled=isntValid}} type="submit" class="btn btn-primary" value="Login">
+        </div>
+    {{/em-form}}
+</div>

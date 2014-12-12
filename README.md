@@ -19,29 +19,16 @@ Please visit the documentation for installation & usage documentations: http://i
 
 ## Plugin Development
 
-### Requirements
+## Running
 
-* [npm](https://www.npmjs.org/)
-* [Bower](http://bower.io/)
-* [Broccoli](https://github.com/broccolijs/broccoli)
+* `ember server`
+* Visit your app at http://localhost:4200.
 
-### Setup
+## Running Tests
 
-* `git clone https://github.com/indexiatech/ember-forms.git && cd ember-forms`
-* `npm install`
-* `bower install`
-* `broccoli serve` then visit [http://localhost:4200](http://localhost:4200)
+* `ember test`
+* `ember test --server`
 
-### Building the Plugin
+## Building
 
-* `rm -Rf ./dist`
-* `broccoli build dist`
-
-### Running the Tests
-
-* Once the server is running you should be able to visit [http://localhost:4200/tests](http://localhost:4200/tests)
-
-### Want to Help? Ongoing Tasks:
-
-* Convert our tests to ES6
-* Better test coverage
+* `ember build`

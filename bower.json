@@ -43,15 +43,23 @@
     "tests"
   ],
   "license": "Apache2",
-  "devDependencies": {
-    "jquery": "~2.1.0",
-    "bootstrap": "~3.1.1",
-    "ember": "~1.6.1",
-    "font-awesome": "~4.0.3",
-    "highlightjs": "~8.0.0",
-    "ember-qunit": "~0.1.8",
-    "ember-model": "~0.0.11",
-    "qunit": "~1.14.0"
+  "dependencies": {
+    "handlebars": "~1.3.0",
+    "jquery": "^1.11.1",
+    "ember": "1.8.1",
+    "ember-data": "1.0.0-beta.12",
+    "ember-resolver": "~0.1.10",
+    "loader.js": "stefanpenner/loader.js#1.0.1",
+    "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.3",
+    "ember-cli-test-loader": "rwjblue/ember-cli-test-loader#0.0.4",
+    "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.2",
+    "ember-qunit": "0.1.8",
+    "ember-qunit-notifications": "0.0.4",
+    "qunit": "~1.15.0"
   },
-  "main": "./dist/globals/main.js"
+  "devDependencies": {
+    "bootstrap": "~3.3.1",
+    "highlightjs": "~8.4.0",
+    "fontawesome": "~4.2.0"
+  }
 }
