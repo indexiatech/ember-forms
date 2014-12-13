@@ -8,7 +8,7 @@ module.exports = {
 
     included: function( app ) {
         this._super.included( app );
-        var isDummy = app.name === 'dummy'
+        var isDummy = app.project.pkg.name === 'ember-idx-forms'
 
         if (isDummy) {
             app.import( 'bower_components/bootstrap/dist/css/bootstrap-theme.css.map' );
@@ -29,12 +29,18 @@ module.exports = {
     },
 
     postprocessTree: function( type, tree ) {
-        return mergeTrees([ tree,
-            pickFiles( 'bower_components/fontawesome/fonts', {
-                srcDir  : '/',
-                files   : [ 'fontawesome-webfont.woff' ],
-                destDir : '/fonts'
-            })
-        ]);
+        var isDummy = (process.env.npm_package_name === 'ember-idx-forms');
+
+        if (isDummy) {
+            return mergeTrees([ tree,
+                pickFiles( 'bower_components/fontawesome/fonts', {
+                    srcDir  : '/',
+                    files   : [ 'fontawesome-webfont.woff' ],
+                    destDir : '/fonts'
+                })
+            ]);
+        } else {
+            return tree;
+        }
     },
 };

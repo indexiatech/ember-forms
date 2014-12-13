@@ -1,0 +1,7 @@
+{{#if form.isHorizontal}}
+    <div {{bind-attr class=horiClass}}>
+        <button {{bind-attr class=classes}} {{bind-attr disabled=disabled}}>{{text}}</button>
+    </div>
+{{else}}
+    <button {{bind-attr class=classes}} {{bind-attr disabled=disabled}}>{{text}}</button>
+{{/if}}
