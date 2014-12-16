@@ -1,4 +1,5 @@
 import Em from 'ember';
+/*global hljs*/
 
 export default {
   name: 'hightlightjs',
