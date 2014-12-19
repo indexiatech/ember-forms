@@ -11,6 +11,9 @@ Syntax:
     optionValuePath=keyForValue
     optionLabelPath=keyForLabel
     prompt="Optional default prompt"}}
+    
+    //Optional params
+    @param propertyIsModel - (boolean) forces the selected object to be assigned to the property instead of the optionValuePath 
  */
 export default FormGroupComponent.extend({
   v_icons: false,
@@ -22,6 +25,7 @@ export default FormGroupComponent.extend({
     optionLabelPath: Em.computed.alias('parentView.optionLabelPath'),
     prompt: Em.computed.alias('parentView.prompt')
   }),
+  propertyIsModel:false,
   property: void 0,
   content: void 0,
   optionValuePath: void 0,
