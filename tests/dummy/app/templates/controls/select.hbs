@@ -39,6 +39,17 @@ Selectbox let a user select one item of a multi pre defined options.
     {{/em-form}}
 </div>
 
+<h2>Result with multiple=true</h2>
+{{#em-form submit_button=false}}
+        {{em-select
+            label="Gender"
+            content=genderOptions
+            optionValuePath="content.id"
+            optionLabelPath="content.name"
+            multiple=true
+        }}
+    {{/em-form}}
+
 <h2>Parameters</h2>
 <table class="table table-striped">
     <tr><th>Param name</th><th>Description</th><th>Default</th></tr>
@@ -48,5 +59,6 @@ Selectbox let a user select one item of a multi pre defined options.
     <tr><td>content</td><td>an array of strings/objects where each element is displayed as a possible selection</td><td>none</td></tr>
     <tr><td>optionLabelPath</td><td>the path on each object to the desired property to be displayed as the label of the selection</td><td>none, required.</td></tr>
     <tr><td>optionValuePath</td><td>the path on each object to the desired property value of the selection</td><td>none, required.</td></tr>
+    <tr><td>multiple</td><td>If true multiple item selection will be supported.</td><td>false, optional.</td></tr>
 </table>
 
