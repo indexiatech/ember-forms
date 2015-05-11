@@ -15,7 +15,7 @@ export default Em.Mixin.create({
     }
     return Em.assert(false, 'Cannot find form');
   }),
-  model: Em.computed('form', function() {
+  model: Em.computed('form', 'form.model', function() {
     return this.get('form.model');
   })
 });
