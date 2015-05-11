@@ -10,7 +10,7 @@ export default Em.Mixin.create({
     this._super();
     return Em.Binding.from("model." + (this.get('propertyName'))).to('value').connect(this);
   },
-  hasValue: (function() {
+  hasValue: Em.computed('value', function() {
     return this.get('value') !== null;
-  }).property('value').readOnly()
+  }).readOnly()
 });

@@ -18,24 +18,24 @@ export default Em.Component.extend(InFormMixin, {
   text: void 0,
   extraClass: void 0,
   horiClass: 'col-sm-offset-2 col-sm-10',
-  horiClassCalc: (function() {
+  horiClassCalc: Em.computed('form.isHorizontal', function() {
     if (this.get('form.isHorizontal') && this.get('horiClass')) {
       return this.get('horiClass');
     }
-  }).property('form.isHorizontal'),
+  }),
   init: function() {
     this._super();
     return Em.Binding.from('model.errors.' + this.get('parentView.propertyName')).to('errors').connect(this);
   },
-  helpText: (function() {
+  helpText: Em.computed('text', 'errors.firstObject', function() {
     return this.get('errors.firstObject') || this.get('text');
-  }).property('text', 'errors.firstObject'),
-  hasHelp: (function() {
+  }),
+  hasHelp: Em.computed('helpText', function() {
     var _ref;
     return ((_ref = this.get('helpText')) != null ? _ref.length : void 0) > 0;
-  }).property('helpText'),
-  hasError: (function() {
+  }),
+  hasError: Em.computed('errors.length', function() {
     var _ref;
     return (_ref = this.get('errors')) != null ? _ref.length : void 0;
-  }).property('errors.length')
+  })
 });

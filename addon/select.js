@@ -28,10 +28,10 @@ export default FormGroupComponent.extend({
   optionValuePath: void 0,
   optionLabelPath: void 0,
   prompt: void 0,
-  controlWrapper: (function() {
+  controlWrapper: Em.computed('form.form_layout', function() {
     if (this.get('form.form_layout') === 'horizontal') {
       return 'col-sm-10';
     }
     return null;
-  }).property('form.form_layout')
+  })
 });

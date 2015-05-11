@@ -14,11 +14,11 @@ export default Em.Component.extend(InFormMixin, {
   type: 'submit',
   attributeBindings: ['disabled'],
   horiClass: 'col-sm-offset-2 col-sm-10',
-  disabled: (function() {
+  disabled: Em.computed('model.isValid', function() {
     if (!Em.isNone(this.get('model.isValid'))) {
       return !this.get('model.isValid');
     } else {
       return false;
     }
-  }).property('model.isValid')
+  })
 });

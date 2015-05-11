@@ -3,7 +3,7 @@ import Em from 'ember';
 
 export default Em.Controller.extend({
   layout: 'default',
-  genderOptions: [
+  genderOptions: Em.A([
     {
       id: 'M',
       name: 'Male'
@@ -14,7 +14,7 @@ export default Em.Controller.extend({
       id: 'O',
       name: 'Other'
     }
-  ],
+  ]),
   actions: {
     submit: function() {
       return alert("Submitted!");

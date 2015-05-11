@@ -2,27 +2,27 @@ import Em from 'ember';
 
 export default Em.ArrayController.extend({
   needs: ['application'],
-  model: [
+  model: Em.A([
     {
       route: 'overview',
       text: 'Overview',
-      items: []
+      items: Em.A()
     }, {
       route: 'getstarted',
       text: 'Getting started',
-      items: []
+      items: Em.A()
     }, {
       route: 'quickexample',
       text: '5 Minutes Example',
-      items: []
+      items: Em.A()
     }, {
       route: 'form',
       text: 'Form',
-      items: []
+      items: Em.A()
     }, {
       route: 'controls',
       text: 'Controls',
-      items: [
+      items: Em.A([
         {
           route: 'controls.input',
           text: 'Input'
@@ -45,7 +45,7 @@ export default Em.ArrayController.extend({
           route: 'controls.wrapped-input',
           text: 'Wrapped Input'
         }
-      ]
+      ])
     }
-  ]
+  ])
 });

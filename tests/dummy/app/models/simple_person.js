@@ -8,13 +8,13 @@ var SimplePerson = DS.Model.extend(EV.Mixin, {
   comment: DS.attr('string'),
   active: DS.attr('boolean'),
   gender: DS.attr('string'),
-  nameHasValue: (function() {
+  nameHasValue: Em.computed('name', function() {
     var _ref;
     return !((_ref = this.get('name')) != null ? _ref.length : void 0);
-  }).property('name'),
-  asjson: (function() {
+  }),
+  asjson: Em.computed('name', 'password', 'comment', 'active', 'gender', function() {
     return "name: " + (this.get('name')) + ", password: " + (this.get('password')) + ", comment: " + (this.get('comment')) + ", active: " + (this.get('active')) + ", gender: " + (this.get('gender'));
-  }).property('name', 'password', 'comment', 'active', 'gender')
+  })
 });
 
 SimplePerson.reopen({

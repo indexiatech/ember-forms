@@ -24,15 +24,15 @@ export default Em.Component.extend(InFormMixin, {
   classNameBindings: ['extraClass', 'inlineClassCalc', 'horiClassCalc'],
   attributeBindings: ['for'],
   horiClass: 'col-sm-2',
-  horiClassCalc: (function() {
+  horiClassCalc: Em.computed('form.isHorizontal', function() {
     if (this.get('form.isHorizontal') && this.get('horiClass')) {
       return this.get('horiClass');
     }
-  }).property('form.isHorizontal'),
+  }),
   inlineClass: 'sr-only',
-  inlineClassCalc: (function() {
+  inlineClassCalc: Em.computed('form.form_layout', function() {
     if (this.get('form.isInline') && this.get('inlineClass')) {
       return this.get('inlineClass');
     }
-  }).property('form.form_layout')
+  })
 });

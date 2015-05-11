@@ -32,31 +32,31 @@ export default Em.Component.extend(InFormMixin, HasPropertyMixin, HasPropertyVal
   classNameBindings: ['class', 'hasSuccess', 'hasWarning', 'hasError', 'v_icons:has-feedback'],
   attributeBindings: ['disabled'],
   canShowErrors: false,
-  hasSuccess: (function() {
+  hasSuccess: Em.computed('status', 'canShowErrors', function() {
     var success;
     success = this.get('validations') && this.get('status') === 'success' && this.get('canShowErrors');
     this.set('success', success);
     return success;
-  }).property('status', 'canShowErrors'),
-  hasWarning: (function() {
+  }),
+  hasWarning: Em.computed('status', 'canShowErrors', function() {
     var warning;
     warning = this.get('validations') && this.get('status') === 'warning' && this.get('canShowErrors');
     this.set('warning', warning);
     return warning;
-  }).property('status', 'canShowErrors'),
-  hasError: (function() {
+  }),
+  hasError: Em.computed('status', 'canShowErrors', function() {
     var error;
     error = this.get('validations') && this.get('status') === 'error' && this.get('canShowErrors');
     this.set('error', error);
     return error;
-  }).property('status', 'canShowErrors'),
+  }),
   v_icons: Em.computed.alias('form.v_icons'),
   v_success_icon: 'fa fa-check',
   v_warn_icon: 'fa fa-exclamation-triangle',
   v_error_icon: 'fa fa-times',
   validations: true,
   yieldInLabel: false,
-  v_icon: (function() {
+  v_icon: Em.computed('status', 'canShowErrors', function() {
     if (!this.get('canShowErrors')) {
       return;
     }
@@ -71,7 +71,7 @@ export default Em.Component.extend(InFormMixin, HasPropertyMixin, HasPropertyVal
       default:
         return null;
     }
-  }).property('status', 'canShowErrors'),
+  }),
   init: function() {
     return this._super();
   },

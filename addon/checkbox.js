@@ -22,21 +22,21 @@ export default FormGroupComponent.extend({
       return Em.Binding.from("model." + (this.get('propertyName'))).to('checked').connect(this);
     }
   }),
-  wrapperClass: (function() {
+  wrapperClass: Em.computed('form.form_layout', function() {
     if (this.get('form.form_layout') === 'horizontal') {
       return 'col-sm-offset-2 col-sm-10';
     }
-  }).property('form.form_layout'),
-  labelWrapperClass: (function() {
+  }),
+  labelWrapperClass: Em.computed('form.form_layout', function() {
     if (this.get('form.form_layout') === 'horizontal') {
       return 'checkbox';
     }
     return null;
-  }).property('form.form_layout'),
-  "class": (function() {
+  }),
+  "class": Em.computed('form.form_layout', function() {
     if (this.get('form.form_layout') !== 'horizontal') {
       return 'checkbox';
     }
     return 'form-group';
-  }).property('form.form_layout')
+  })
 });

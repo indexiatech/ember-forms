@@ -4,7 +4,7 @@ import Em from 'ember';
 Find the form of the view that merges this mixin
  */
 export default Em.Mixin.create({
-  form: (function() {
+  form: Em.computed('parentView', function() {
     var parentView;
     parentView = this.get('parentView');
     while (parentView) {
@@ -14,8 +14,8 @@ export default Em.Mixin.create({
       parentView = parentView.get('parentView');
     }
     return Em.assert(false, 'Cannot find form');
-  }).property('parentView'),
-  model: (function() {
+  }),
+  model: Em.computed('form', function() {
     return this.get('form.model');
-  }).property('form')
+  })
 });

@@ -13,11 +13,11 @@ export default Em.Mixin.create({
     Em.assert(!Em.isNone(this.get('propertyName')), 'propertyName is required.');
     return Em.Binding.from('model.errors.' + this.get('propertyName')).to('errors').connect(this);
   },
-  status: (function() {
+  status: Em.computed('errors.length', function() {
     if (this.get('errors.length')) {
       return 'error';
     } else {
       return 'success';
     }
-  }).property('errors.length')
+  })
 });

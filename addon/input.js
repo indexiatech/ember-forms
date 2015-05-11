@@ -25,10 +25,10 @@ export default FormGroupComponent.extend({
   required: void 0,
   autofocus: void 0,
   disabled: void 0,
-  controlWrapper: (function() {
+  controlWrapper: Em.computed('form.form_layout', function() {
     if (this.get('form.form_layout') === 'horizontal') {
       return 'col-sm-10';
     }
     return null;
-  }).property('form.form_layout')
+  })
 });
