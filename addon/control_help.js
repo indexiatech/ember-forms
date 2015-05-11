@@ -28,7 +28,7 @@ export default Em.Component.extend(InFormMixin, {
     return Em.Binding.from('model.errors.' + this.get('parentView.propertyName')).to('errors').connect(this);
   },
   helpText: Em.computed('text', 'errors.firstObject', function() {
-    return this.get('errors.firstObject') || this.get('text');
+    return this.get('errors.firstObject.message') || this.get('errors.firstObject') || this.get('text');
   }),
   hasHelp: Em.computed('helpText', function() {
     var _ref;
