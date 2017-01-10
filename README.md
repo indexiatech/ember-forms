@@ -12,6 +12,10 @@
 
 Smart, Intuitive forms for Ember.js styled with Bootstrap &amp; Validation ready.
 
+# Looking for maintainer
+
+Due to lack of time, I'm unable to continue the progress of this project and seeking for maintainers.
+
 ## Installation & Tutorial
 
 With Ember-CLI:
